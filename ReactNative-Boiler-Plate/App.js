@@ -8,7 +8,8 @@ import {
   SecondScreen,
   ThirdScreen,
   MapScreen,
-  TestScreen
+  TestScreen,
+  EventScreen
 } from './src/screens/';
 
 export default class App extends React.Component {
@@ -28,6 +29,10 @@ export default class App extends React.Component {
         },
         third: {
           screen: ThirdScreen,
+          navigationOptions: {header : null}
+        },
+        event: {
+          screen: EventScreen,
           navigationOptions: {header : null}
         },
       }, {
