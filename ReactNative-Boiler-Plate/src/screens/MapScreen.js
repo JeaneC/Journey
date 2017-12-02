@@ -62,7 +62,7 @@ class MapScreen extends Component {
       markers: [
 
       ],
-      modalVisible: null,
+      modalVisible: false,
       polylines : [
          {
           coordinates: [
@@ -265,14 +265,7 @@ class MapScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Modal
-           animationType="slide"
-           transparent={false}
-           visible={this.state.modalVisible}
-           onRequestClose={() => {alert("Modal has been closed.")}}
-         >
-           <View style={{flex: 1, backgroundColor: 'red' }}/>
-         </Modal>
+
         <MapView
           style={styles.mapStyle}
           region={this.state.region}
