@@ -9,28 +9,47 @@ import { loginFacebook, storeToken } from '../actions/';
 
 import loginBtn from '../assets/images/login-btn.png';
 
+const FBSDK = require('react-native-fbsdk');
+const {
+  LoginManager,
+} = FBSDK;
+
 class LoginScreen extends Component {
   componentDidMount() {
     // this.props.navigation.navigate('map')
+    this.props.navigation.navigate('second')
   }
 
   logIn = async () => {
-    console.log('called')
-    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('2218450408381504', {
-        permissions: ['public_profile'],
-      });
-
-    if (type === 'success') {
-      // Get the user's name using Facebook's Graph API
-      const response = await fetch(
-        `https://graph.facebook.com/me?access_token=${token}`);
-      const url = response.url
-      const userData = await axios.get(url)
-      const { data } = userData
-
-      const hold = await this.props.loginFacebook(data)
-      this.props.navigation.navigate('second')
-    }
+    LoginManager.logInWithReadPermissions(['public_profile']).then(
+      function(result) {
+        if (result.isCancelled) {
+          alert('Login was cancelled');
+        } else {
+          alert('Login was successful with permissions: '
+            + result.grantedPermissions.toString());
+        }
+      }.bind(this),
+      function(error) {
+        alert('Login failed with error: ' + error);
+      }
+    );
+    // console.log('called')
+    // const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('2218450408381504', {
+    //     permissions: ['public_profile'],
+    //   });
+    //
+    // if (type === 'success') {
+    //   // Get the user's name using Facebook's Graph API
+    //   const response = await fetch(
+    //     `https://graph.facebook.com/me?access_token=${token}`);
+    //   const url = response.url
+    //   const userData = await axios.get(url)
+    //   const { data } = userData
+    //
+    //   const hold = await this.props.loginFacebook(data)
+    //   this.props.navigation.navigate('second')
+    // }
   }
 
   check = () => {

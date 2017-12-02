@@ -42,13 +42,20 @@ class SecondScreen extends Component {
   }
 
   getTrueFriends = async () => {
+    const token = "EAACEdEose0cBAPWXzewm7GHUWClwO5AfgmmRRjhc3XVZC4WoP1AOnMLkkEVa1CTyXdKI1zzEICwtCCVqjW8hkO0ZC2BPzooJ0mjVslqNuIl8MKTRfkKQzogXSiiiXhaf20ZCZA9Sr7YEpp7cE4DxXZBugrq6xbCfu4sJq6ZBdDlqYC8vKPnREyUCfcgmeIYYoZD"
     const ROOT_URL = "https://graph.facebook.com/v2.11/"
+    const query = `${ROOT_URL}/1637485562938133/friendlists?access_token=${token}`
+
+    const response = await axios.get(query)
+    console.log(response)
+    const { data } = response.data
+    console.log(data)
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ flex: 4 }}/>
+        <View style={{ flex: 4 }} />
         <Button
           large
           title='Get Places'
