@@ -1,0 +1,9 @@
+/* Div centered & content inside div centered */
+#div-outer-centered {
+  text-align: center;
+}
+
+#div-inner-centered {
+  display: table;
+  margin: 0 auto;
+}
