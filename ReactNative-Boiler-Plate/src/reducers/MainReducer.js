@@ -4,7 +4,8 @@ const MainReducerDefaultState = {
   uid: null,
   name: null,
   val: null,
-  token: null
+  token: null,
+  events: null
 }
 
 export default (state = MainReducerDefaultState, action) => {
@@ -34,6 +35,11 @@ export default (state = MainReducerDefaultState, action) => {
       return {
         ...state,
         name: action.payload
+      }
+    case 'UPDATE_EVENTS':
+      return {
+        ...state,
+        events: action.payload
       }
     default:
       return state;

@@ -22,6 +22,14 @@ export const getEventInfo = async (eventId) => {
     })
 }
 
+export const getEvents = async (eventId) => {
+  return await database.ref(`events/`).once('value')
+    .then(snapshot => {
+      console.log(snapshot)
+      return snapshot.val()
+    })
+}
+
 export const updatePlayerTurn = async (eventId, val) => {
   database.ref(`events/${eventId}/currentPlayer`).set(val);
 }
@@ -37,6 +45,8 @@ export const setMarkers = (eventId, markers) => {
 export const setPolylines = (eventId, polylines) => {
   database.ref(`events/${eventId}/polylines`).set(polylines);
 }
+
+
 
 
 

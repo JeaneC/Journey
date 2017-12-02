@@ -10,10 +10,14 @@ import { loginFacebook, storeToken } from '../actions/';
 import loginBtn from '../assets/images/login-btn.png';
 import backgroundPhoto from '../assets/images/sign-in-bg.png';
 
+import { getEvents } from '../firebase/firebase';
+import { updateEvents } from '../actions/index';
+
 class LoginScreen extends Component {
   componentDidMount() {
     // this.props.navigation.navigate('map')
     // this.props.navigation.navigate('second')
+    this.props.navigation.navigate('event')
   }
 
   logIn = async () => {
@@ -32,7 +36,12 @@ class LoginScreen extends Component {
       const { data } = userData
 
       const hold = await this.props.loginFacebook(data)
-      this.props.navigation.navigate('second')
+
+
+      const events = await getEvents()
+      this.props.updateEvents(events)
+      //Before navigating to second - pull all events
+      this.props.navigation.navigate('event')
     }
   }
 
@@ -77,6 +86,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     loginFacebook: (data) => { dispatch(loginFacebook(data)) },
     storeToken: (data) => { dispatch(storeToken(data)) },
+    updateEvents: (data) => { dispatch(updateEvents(data)) },
   }
 }
 
