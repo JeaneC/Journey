@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="212px" height="72px" viewBox="0 0 212 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>info-text@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="wire-frame" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Login-screen" transform="translate(-81.000000, -512.000000)">
+            <g id="sign-in-bg" transform="translate(36.000000, 76.000000)">
+                <g id="info-text" transform="translate(44.460000, 432.140000)">
+                    <text id="Get-inspired" font-family="SFProDisplay-Bold, SF Pro Display" font-size="16.2" font-weight="bold" letter-spacing="0.566999996" fill="#000000">
+                        <tspan x="59.7702305" y="15">Get inspire</tspan>
+                        <tspan x="145.409379" y="15">d</tspan>
+                    </text>
+                    <rect id="Rectangle" fill="#F25C62" x="99.72" y="29.16" width="16.2" height="1.62" rx="0.81"></rect>
+                    <text id="Over-million-new-Pin" font-family="SFProDisplay-Regular, SF Pro Display" font-size="14.58" font-weight="normal" letter-spacing="0.566999996" fill="#BBBBBB">
+                        <tspan x="37.01192" y="54.5">Over million new Pins</tspan>
+                        <tspan x="1.149961" y="72.5">from around the world everyday</tspan>
+                        <tspan x="209.792988" y="72.5">!</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

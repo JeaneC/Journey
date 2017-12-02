@@ -19,9 +19,9 @@
 	<link rel="apple-touch-icon-precomposed" href="graphics/favicons/ipad-icon@2x.png" sizes="152x152" /> <!-- iPad Icon @2x -->
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="./css/bootstrap.min.css">
-	<link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/sign-in.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/sign-in.css">
 
 
   <!-- Font Awesome -->
@@ -41,15 +41,26 @@
 
 <!--  BEGIN BODY -->
 <body>
-  <!-- Background -->
-  <div class="background">
+  <div class="container-fluid">
+    <div class="row intro">
 
+      <!-- space divider -->
+      <div style= "padding-top: 3.0cm"></div>
 
-    <!--  earth img -->
-    <div><img alt="earth" class="img-fluid" height="auto" src="../imgs/sign-in/earth.svg"></div>
+      <div id="div-outer-centered">
+        <!--  earth img -->
+        <div id="div-inner-centered">
+        <img alt="earth" class="img-fluid" height="auto" src="../imgs/sign-in/earth.svg">
 
+        <!-- space divider -->
+        <div style = "padding-top: 2.0cm"></div>
+        <img alt="earth" class="img-fluid" height="auto" src="../imgs/sign-in/info-text.svg">
+
+      </div>
+    </div>
 
   </div>
+</div>
 </body>
 <!--  END BODY -->
 
