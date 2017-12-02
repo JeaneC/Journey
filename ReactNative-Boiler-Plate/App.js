@@ -7,7 +7,8 @@ import {
   LoginScreen,
   SecondScreen,
   ThirdScreen,
-  MapScreen
+  MapScreen,
+  TestScreen
 } from './src/screens/';
 
 export default class App extends React.Component {

@@ -6,11 +6,36 @@ import axios from 'axios';
 import qs from 'qs';
 import polyline from 'google-polyline'
 
+import CircleMenu from '../components/react-native-circle';
+
 let id = 1;
 let loaded = false;
 
 
 class lineScreen extends Component {
+  items = [
+    {
+      name: 'md-home',
+      color: '#298CFF'
+    },
+    {
+      name: 'md-search',
+      color: '#30A400'
+    },
+    {
+      name: 'md-time',
+      color: '#FF4B32'
+    },
+    {
+      name: 'md-settings',
+      color: '#8A39FF'
+    },
+    {
+      name: 'md-navigate',
+      color: '#FF6A00'
+    }
+  ];
+
   static navigationOptions = {
     title: 'Line',
     tabBarIcon: ({ tintColor }) => {
@@ -168,70 +193,16 @@ class lineScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <MapView
-          style={styles.mapStyle}
-          region={this.state.region}
-          onPress={this.onMapPress}
-          zoomEnabled={false}
-          pitchEnabled={false}
-          onRegionChangeComplete={this.onRegionChangeComplete}
-        >
-        {this.state.markers.map((marker, index) => {
-          return (
-            <MapView.Marker
-              draggable
-              pinColor="blue"
-              coordinate={marker.coordinate}
-              key={marker.id}
-            >
-
-            </MapView.Marker>
-          );
-        })}
-        {this.state.polylines.map(polyline => {
-          return(
-            <MapView.Polyline
-              key={polyline.id}
-              coordinates={polyline.coordinates}
-              strokeColor="#FF0000"
-              fillColor="rgba(255,0,0)"
-              strokeWidth={5}
-            />
-          )
-        })}
-        </MapView>
-        <View style={styles.buttonContainer}>
-          <Button
-            small
-            title="Clear"
-            backgroundColor="red"
-            onPress={this.clearMarkers}
-            buttonStyle={styles.buttonStyle}
+      <View>
+        <CircleMenu
+              bgColor="#E74C3C"
+              items={this.items}
+              onPress={this.onPress}
           />
-          <Button
-            small
-            title="Draw"
-            backgroundColor="#009688"
-            onPress={this.drawPath}
-            buttonStyle={styles.buttonStyle}
-          />
-          <Button
-            small
-            title="Prev"
-            backgroundColor="blue"
-            onPress={this.prev}
-            buttonStyle={styles.buttonStyle}
-          />
-          <Button
-            small
-            title="Print"
-            backgroundColor="black"
-            onPress={this.printPath}
-            buttonStyle={styles.buttonStyle}
-          />
-        </View>
       </View>
+
+
+
     )
   }
 }
