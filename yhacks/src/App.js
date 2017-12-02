@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { injectGlobal } from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
+
+import { provider, firebase } from './firebase/firebase';
 
 class App extends Component {
   componentDidMount() {
@@ -51,12 +53,37 @@ class App extends Component {
         min-height: 100vh;
       }
     `
+
+
+  }
+  signIn = () =>{
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      console.log(user)
+      console.log(token)
+      // ...
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
   }
 
   render() {
+    const Firebase = styled.button`
+    `
+
     return (
       <div>
-        Hello World
+        <Firebase onClick={this.signIn}>Login</Firebase>
       </div>
     );
   }

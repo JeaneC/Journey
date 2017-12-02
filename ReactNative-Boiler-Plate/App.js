@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { StackNavigator } from 'react-navigation';
 
 import {
-  MainScreen,
+  LoginScreen,
   SecondScreen,
   ThirdScreen
 } from './src/screens/';
@@ -13,7 +13,7 @@ export default class App extends React.Component {
   render() {
     const MainNavigator = StackNavigator({
         main: {
-          screen: MainScreen,
+          screen: LoginScreen,
           navigationOptions: {header : null}
         },
         second: {
