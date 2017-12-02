@@ -7,8 +7,8 @@ import axios from 'axios';
 import { connect } from 'react-redux'
 import { loginFacebook, storeToken } from '../actions/';
 
-// import loginBtn from '../assets/images/login-btn.png';
-import backgroundPhoto from '../assets/images/sign-in-background.png';
+import loginBtn from '../assets/images/login-btn.png';
+import backgroundPhoto from '../assets/images/sign-in-bg.png';
 
 class LoginScreen extends Component {
   componentDidMount() {
@@ -43,9 +43,9 @@ class LoginScreen extends Component {
   render() {
     return (
       <Image source={backgroundPhoto} style={styles.imageContainer}>
-        {/* <TouchableOpacity onPress={this.logIn} style={styles.buttonContainer}>
-          <Image source={loginBtn} />
-        </TouchableOpacity> */}
+        <TouchableOpacity onPress={this.logIn} style={styles.buttonContainer}>
+            <Image source={loginBtn} />
+        </TouchableOpacity>
       </Image>
     )
   }
@@ -59,12 +59,17 @@ const styles = {
   },
   imageContainer: {
     flex: 1,
-    resizeMode: 'cover'
+    width: null,
+    height: null,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonContainer: {
     position: 'absolute',
+    bottom: 30,
     justifyContent: 'center',
-    bottom: 20,
+    alignItems: 'center'
   },
 }
 

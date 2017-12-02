@@ -15,7 +15,7 @@ import axios from 'axios';
 import polyline from 'google-polyline'
 
 
-const EVENT_ID = "evei019fna9fkasf";
+const EVENT_ID = "event0001";
 const USER_ID = "1637485562938133"
 const MAX_TURNS = 7 //Subtract one since we start from 0
 
