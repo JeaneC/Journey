@@ -8,6 +8,7 @@ import user from '../assets/images/user.png';
 import map from '../assets/images/map.png';
 import calendar from '../assets/images/calendar.png';
 import yhack from '../assets/images/yhack.png';
+import participants from '../assets/images/participants.png';
 
 class EventScreen extends Component {
   state = {
@@ -53,7 +54,11 @@ class EventScreen extends Component {
           </TouchableOpacity>
         </View>
         <View style={{ flex: 5 }} >
-          <Image source={yhack} style={style.imageStyle} />
+          <Text style={{ flex: 1, fontSize: 36, textAlign: 'center'}}>YHack</Text>
+          <Text style={{ flex: 1, fontSize: 24, color: "#d3d3d3", textAlign: 'center'}}>Dec 1, 2017</Text>
+          <Text style={{ flex: 1, fontSize: 24, color: "#d3d3d3", textAlign: 'center'}}>5 Participants</Text>
+          <Image source={participants} style={styles.imageStyle} />
+
         </View>
 
         <View style={styles.events}>
@@ -61,7 +66,7 @@ class EventScreen extends Component {
         </View>
         <View style={styles.botBar}>
           <TouchableOpacity style={styles.iconBox}>
-            <Image source={calendar} style={}/>
+            <Image source={calendar} style={styles.iconBox}/>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconBox}>
             <Image source={map} />
@@ -87,7 +92,8 @@ const styles = {
   },
   imageStyle: {
     flex: 5,
-    resizeMode: "cover",
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   mainEvent: {
     flex: 4
