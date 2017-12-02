@@ -10,6 +10,9 @@ import { loginFacebook } from '../actions/';
 import loginBtn from '../assets/images/login-btn.png';
 
 class LoginScreen extends Component {
+  componentDidMount() {
+    this.props.navigation.navigate('map')
+  }
 
   logIn = async () => {
     console.log('called')

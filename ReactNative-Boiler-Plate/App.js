@@ -6,7 +6,8 @@ import { StackNavigator } from 'react-navigation';
 import {
   LoginScreen,
   SecondScreen,
-  ThirdScreen
+  ThirdScreen,
+  MapScreen
 } from './src/screens/';
 
 export default class App extends React.Component {
@@ -14,6 +15,10 @@ export default class App extends React.Component {
     const MainNavigator = StackNavigator({
         main: {
           screen: LoginScreen,
+          navigationOptions: {header : null}
+        },
+        map: {
+          screen: MapScreen,
           navigationOptions: {header : null}
         },
         second: {
