@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="173px" height="46px" viewBox="0 0 173 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Journey@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="wire-frame" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="51.84" font-family="KlavikaBold-BoldOSF, Klavika Bold" letter-spacing="0.77760002" font-weight="bold">
+        <g id="Login-screen" transform="translate(-100.000000, -90.000000)" fill="#4A69A4">
+            <g id="sign-in-bg" transform="translate(36.000000, 76.000000)">
+                <text id="Journey">
+                    <tspan x="65" y="49">Journey</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
