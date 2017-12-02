@@ -2,6 +2,7 @@ const MainReducerDefaultState = {
   message : '',
   simple: false,
   uid: null,
+  name: null,
   val: null,
 }
 
@@ -17,6 +18,17 @@ export default (state = MainReducerDefaultState, action) => {
         ...state,
         val: action.payload
       }
+      case 'UPDATE_LOGIN':
+        return {
+          ...state,
+          uid: action.payload.id,
+          name: action.payload.name
+        }
+      case 'UPDATE_NAME':
+        return {
+          ...state,
+          name: action.payload
+        }
     default:
       return state;
   }

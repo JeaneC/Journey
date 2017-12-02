@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import { expo } from 'expo'
+import axios from 'axios';
+
+import { connect } from 'react-redux'
+import { loginFacebook } from '../actions/';
 
 import loginBtn from '../assets/images/login-btn.png';
 
@@ -16,7 +20,13 @@ class LoginScreen extends Component {
       // Get the user's name using Facebook's Graph API
       const response = await fetch(
         `https://graph.facebook.com/me?access_token=${token}`);
-      console.log(response);
+      const url = response.url
+      const userData = await axios.get(url)
+      const { data } = userData
+
+      const hold = await this.props.loginFacebook(data)
+
+      this.props.navigation.navigate('second')
     }
   }
 
@@ -46,4 +56,10 @@ const styles = {
   }
 }
 
-export default LoginScreen;
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    loginFacebook: (data) => { dispatch(loginFacebook(data)) },
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LoginScreen);

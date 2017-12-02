@@ -6,3 +6,5 @@ export const updateMessage = (message) => {
 }
 
 export const updateVal = (val) => ({ type: 'UPDATE_VAL', payload: val })
+
+export const loginFacebook = (data) => ({ type: 'UPDATE_LOGIN', payload: data })

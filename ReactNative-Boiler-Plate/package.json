@@ -6,6 +6,7 @@
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
+    "axios": "^0.17.1",
     "expo": "^22.0.0",
     "firebase": "^4.6.0",
     "react": "16.0.0-beta.5",
@@ -15,6 +16,7 @@
     "react-navigation": "^1.0.0-beta.16",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "uid": "0.0.2"
   }
 }

@@ -3,6 +3,8 @@ import { Text, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import { database, setMessage, getSecretMessages } from '../firebase/firebase';
 
+import { connect } from 'react-redux'
+
 class SecondScreen extends Component {
 
   getFirebaseStuff = async () => {
@@ -58,4 +60,12 @@ const styles = {
   }
 }
 
-export default SecondScreen;
+const mapStateToProps = (state) => {
+  console.log('Second SecondScreen')
+  console.log(state)
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps)(SecondScreen);
