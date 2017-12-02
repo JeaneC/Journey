@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="277px" height="69px" viewBox="0 0 277 69" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>login-btn@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="254.52" height="46.2" rx="3.36"></rect>
+        <filter x="-7.5%" y="-30.3%" width="114.9%" height="182.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0622735507 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="wire-frame" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Login-screen" transform="translate(-49.000000, -677.000000)">
+            <g id="login-btn" transform="translate(60.000000, 683.000000)">
+                <g id="bg">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#3B5998" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <g id="Group" transform="translate(20.320000, 12.240000)" fill="#FFFFFF">
+                    <text id="Sign-in-with-faceboo" font-family="SFUIDisplay-Medium, SF UI Display" font-size="15.12" font-weight="400" letter-spacing="0.725760001">
+                        <tspan x="43" y="16">Sign in with facebook</tspan>
+                    </text>
+                    <g id="fb" transform="translate(-0.000000, -0.000000)">
+                        <path d="M7.87098592,22.72 L7.87098592,13.8041078 L11.4676056,13.8041078 L11.8461972,9.52982209 L7.87098592,9.52982209 C7.69175538,7.27296134 7.81795257,5.91296134 8.24957746,5.44982209 C8.68120236,4.98668283 9.94317419,4.85715902 12.035493,5.06125066 L12.035493,1.17553637 C10.0519395,0.880535495 8.53757335,0.880535495 7.49239437,1.17553637 C5.92462589,1.61803769 5.0315493,2.12 4.2743662,3.48 C3.76957746,4.38666667 3.58028169,6.46803593 3.70647887,9.7241078 L0.29915493,9.7241078 L0.109859155,13.6098221 L3.70647887,13.6098221 L3.70647887,22.72 L7.87098592,22.72 Z" id="Path-2"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
