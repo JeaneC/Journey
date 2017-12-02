@@ -4,6 +4,13 @@ import { Button } from 'react-native-elements';
 import { database, setMessage, getSecretMessages } from '../firebase/firebase';
 
 import { connect } from 'react-redux'
+import axios from 'axios';
+
+const FBSDK = require('react-native-fbsdk');
+const {
+  GraphRequest,
+  GraphRequestManager,
+} = FBSDK;
 
 class SecondScreen extends Component {
 
@@ -12,23 +19,48 @@ class SecondScreen extends Component {
     console.log(firebasePromise)
   }
 
+  getFriendsWithApp = async () => {
+    // https://graph.facebook.com/v2.11/search?type=place&{parameters}&fields={place information}
+    console.log(this.props)
+    // const token = this.props.token
+    const token = "EAAfhqzyLHEABAOPaEmtEDCM5YWlCZCDBjCG2IyFVimGclVtEMCZCmpDlubSjFiUMxalhKqWcBSw9i80dyXFGN4hQYHDRoFtUipnIxsKYKArJI4weQ3ZAFXYbN4lz1i0UI14tRpNBQZCHLAT60apm8Ii5CqjHBJgFc6v97safIv1egGIxJtS2hpMbqFxwp9ZCZCFmaGFXSZBUaLqIAqYVxz7";
+    const latitude = 40.72004412623778;
+    const longitude = -73.8111714306203
+    const center = `${latitude},${longitude}`
+    const radius = 1000;
+    const ROOT_URL = "https://graph.facebook.com/v2.11/search?type=place&"
+    const categories = "['EDUCATION']";
+    const midQuery = `center=${center}&distance=${radius}`
+
+
+    //ARTS_ENTERTAINMENT, EDUCATION, FITNESS_RECREATION, FOOD_BEVERAGE, HOTEL_LODGING, MEDICAL_HEALTH, SHOPPING_RETAIL, TRAVEL_TRANSPORTATION.
+    const query = `${ROOT_URL}${midQuery}&fields=name,picture&access_token=${token}&categories=${categories}`
+    console.log(query)
+    const response = await axios.get(query)
+    const { data } = response.data
+    console.log(data)
+  }
+
+  getTrueFriends = async () => {
+    const ROOT_URL = "https://graph.facebook.com/v2.11/"
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={{ flex: 4 }}/>
-        <Text style={styles.text1}>Second Screen</Text>
         <Button
           large
-          title='Firebase Set'
+          title='Get Places'
           buttonStyle={styles.button}
           backgroundColor='red'
-          onPress={() => setMessage('Hello World')}
+          onPress={() => this.getFriendsWithApp()}
         />
         <Button
           large
-          title='Firebase Get'
+          title='Get Friends'
           buttonStyle={styles.button}
-          onPress={() => this.getFirebaseStuff()}
+          onPress={() => this.getTrueFriends()}
           backgroundColor='green'
         />
         <Button
@@ -63,9 +95,8 @@ const styles = {
 const mapStateToProps = (state) => {
   console.log('Second SecondScreen')
   console.log(state)
-  return {
-
-  }
+  const { token } = state.main
+  return { token }
 }
 
 export default connect(mapStateToProps)(SecondScreen);

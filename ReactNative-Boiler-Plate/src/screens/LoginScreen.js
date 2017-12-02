@@ -5,13 +5,13 @@ import { expo } from 'expo'
 import axios from 'axios';
 
 import { connect } from 'react-redux'
-import { loginFacebook } from '../actions/';
+import { loginFacebook, storeToken } from '../actions/';
 
 import loginBtn from '../assets/images/login-btn.png';
 
 class LoginScreen extends Component {
   componentDidMount() {
-    this.props.navigation.navigate('map')
+    // this.props.navigation.navigate('map')
   }
 
   logIn = async () => {
@@ -19,6 +19,7 @@ class LoginScreen extends Component {
     const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('2218450408381504', {
         permissions: ['public_profile'],
       });
+
     if (type === 'success') {
       // Get the user's name using Facebook's Graph API
       const response = await fetch(
@@ -28,7 +29,6 @@ class LoginScreen extends Component {
       const { data } = userData
 
       const hold = await this.props.loginFacebook(data)
-
       this.props.navigation.navigate('second')
     }
   }
@@ -62,6 +62,7 @@ const styles = {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     loginFacebook: (data) => { dispatch(loginFacebook(data)) },
+    storeToken: (data) => { dispatch(storeToken(data)) },
   }
 }
 

@@ -12,24 +12,32 @@ const config = {
 firebase.initializeApp(config);
 
 const database = firebase.database()
-const mainRef = database.ref('Main');
 
-export const getAndUpdateTripNumber = async (uid) => {
-  return await database.ref(`Users/${uid}/trips`).once('value')
-    .then(snapshot => {
-      database.ref(`Users/${uid}/trips`).set(snapshot.val() + 1)
-      return snapshot.val() + 1
-    })
-}
 
-export const getSecretMessages = async() => {
-  return await database.ref('Messages/SecretMessages/').once('value')
+export const getEventInfo = async (eventId) => {
+  return await database.ref(`events/${eventId}/`).once('value')
     .then(snapshot => {
+      console.log(snapshot)
       return snapshot.val()
     })
 }
-export const setMessage = (message) => {
-  database.ref(`Messages/Message1`).set(message)
+
+export const updatePlayerTurn = async (eventId, val) => {
+  database.ref(`events/${eventId}/currentPlayer`).set(val);
 }
 
-export { mainRef, database }
+export const updateCurrentTurn = async (eventId, val) => {
+  database.ref(`events/${eventId}/currentTurn`).set(val);
+}
+
+export const setMarkers = (eventId, markers) => {
+  database.ref(`events/${eventId}/markers`).set(markers);
+}
+
+export const setPolylines = (eventId, polylines) => {
+  database.ref(`events/${eventId}/polylines`).set(polylines);
+}
+
+
+
+export { database }
