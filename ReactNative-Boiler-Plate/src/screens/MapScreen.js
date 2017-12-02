@@ -1,52 +1,54 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Animated, Modal } from 'react-native';
 import { MapView, Location, Constants, Permissions } from 'expo';
-import { Button, Icon } from 'react-native-elements';
-import axios from 'axios';
+import { Icon, Button } from 'react-native-elements';
+import {
+  getEventInfo,
+  database,
+  updatePlayerTurn,
+  setMarkers,
+  updateCurrentTurn,
+  setPolylines
+} from '../firebase/firebase';
 import qs from 'qs';
+import axios from 'axios';
 import polyline from 'google-polyline'
 
-import CircleMenu from '../components/react-native-circle';
+
+const EVENT_ID = "evei019fna9fkasf";
+const USER_ID = "1637485562938133"
+const MAX_TURNS = 7 //Subtract one since we start from 0
 
 let id = 1;
-let loaded = false;
 
+const colorDict = {
+  "0" : "#e74c3c",
+  "1" : "#3498db",
+  "2" : "#2ecc71",
+  "3" : "#f1c40f"
+}
 
-class lineScreen extends Component {
-  items = [
-    {
-      name: 'md-home',
-      color: '#298CFF'
-    },
-    {
-      name: 'md-search',
-      color: '#30A400'
-    },
-    {
-      name: 'md-time',
-      color: '#FF4B32'
-    },
-    {
-      name: 'md-settings',
-      color: '#8A39FF'
-    },
-    {
-      name: 'md-navigate',
-      color: '#FF6A00'
-    }
-  ];
+const playerDict = {
+  "1637485562938133" : "0",
+  "1588411377848181" : "1",
+  "1588411377848181" : "2",
+  "1588411377848182" : "3"
+}
 
+// Red, Blue, Green, Yellow
+
+class MapScreen extends Component {
   static navigationOptions = {
-    title: 'Line',
+    title: 'Marker',
     tabBarIcon: ({ tintColor }) => {
-      return <Icon name='navigation' size={30} />
+      return <Icon name='map' size={30} />
     },
     // Note: By default the icon is only shown on iOS. Search the showIcon option below.
 
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       mapLoaded: false,
@@ -58,75 +60,39 @@ class lineScreen extends Component {
         latitudeDelta: 0.015,
       },
       markers: [
+
       ],
-      polylines: [
+      modalVisible: null,
+      polylines : [
          {
           coordinates: [
           ],
           id: 0,
         },
       ],
+      event: null,
+      turnCount: null,
+      currentPlayer: null
 
     };
 
     this.onMapPress = this.onMapPress.bind(this);
 
   }
-  onMapPress(e) {
-    // Commment to prevent marker creating
-    this.setState({
-      markers: [
-        ...this.state.markers,
-        {
-          coordinate: e.nativeEvent.coordinate,
-          id: `${id++}`,
-        },
-      ],
-    });
-  }
 
-  printPath = () => {
-    console.log('The Path Is');
-    console.log(this.state.polylines);
-  }
-
-  prev = () => {
-    if (this.state.markers.length == 0) {
-      return ''
-    }
-    let markers = [...this.state.markers]
-    markers.pop()
-
-    let polylines = [
-       {
-        coordinates: [
-        ],
-        id: 0,
-      },
-    ]
-
-    this.setState({
-      markers,
-      polylines
-    });
-  }
-
-  drawPath = async () => {
-
-    console.log('Decoding Mode')
-
-
-    if (this.state.markers.length < 2 ) {
-      return console.log('We Need More Markers')
+  createPolyline = async (oldMarker, newMarker) => {
+    if (this.state.turnCount < 1) {
+      return
     }
 
     let { markers } = this.state
+    let markersLength = markers.length
     //console.log('We have enough markers')
     //console.log(markers)
 
 
-    const origin = `${markers[0].coordinate.latitude},${markers[0].coordinate.longitude}`
-    const destination = `${markers[1].coordinate.latitude},${markers[1].coordinate.longitude}`
+    const origin = `${oldMarker.coordinate.latitude},${oldMarker.coordinate.longitude}`
+    const destination = `${newMarker.coordinate.latitude},${newMarker.coordinate.longitude}`
 
 
     const GD_ROOT_URL = 'https://maps.googleapis.com/maps/api/directions/json?'
@@ -138,12 +104,9 @@ class lineScreen extends Component {
 
     const params = qs.stringify(GD_QUERY_PARAMS)
     const query = `${GD_ROOT_URL}${params}`
-    console.log(query)
 
     let { data } = await axios.get(query); //google api request
-    // let coordList = data.routes[0].legs;
 
-    //let steps = data.routes[0].legs[0].steps
     let overview = data.routes[0].overview_polyline.points
 
     let coordsList = polyline.decode(overview)
@@ -156,53 +119,207 @@ class lineScreen extends Component {
         })
     }
 
+    let polylineLength = this.state.polylines.length;
+
     let polylines = [
+      ...this.state.polylines,
        {
         coordinates,
-        id: 0,
+        id: polylineLength,
       },
     ]
 
-    this.setState({polylines})
+    setPolylines(EVENT_ID, polylines)
+    console.log('Pre Polylines')
+    console.log(polylines)
 
+    this.setState({ polylines })
+
+  }
+
+  onMapPress(e) {
+    // Commment to prevent marker creating
+    this.makeMove(e.nativeEvent.coordinate)
   }
 
   clearMarkers = () => {
-    let markers = [
+    let markers = []
+    this.setState({ markers })
+  }
 
-    ]
+  prev = () => {
+    if (this.state.markers.length == 0) {
+      return ''
+    }
+    let markers = [...this.state.markers]
+    markers.pop()
 
-    let polylines = [
-       {
-        coordinates: [
-        ],
-        id: 0,
-      },
-    ]
+    this.setState({ markers });
+  }
 
-    this.setState({
-      markers,
-      polylines
-    });
+
+  onRegionChangeComplete = (region) => {
+    this.setState({ region });
+  }
+
+  componentDidMount() {
+    console.log('pre event')
+    //This function will update whenever there is a change in a specific value
+    database.ref(`events/${EVENT_ID}/currentPlayer`).on("value", (snapshot) => {
+      const currentPlayer = snapshot.val()
+      if (currentPlayer != null || currentPlayer != undefined ) {
+        this.setState({ currentPlayer })
+      }
+    })
+
+    //We should change this to just add the new child node, but for now
+    //we will inefficiently wewrite the list
+    database.ref(`events/${EVENT_ID}/markers`).on("value", (snapshot) => {
+      const markers = snapshot.val()
+      // console.log(markers)
+      if ( markers ) {
+        this.setState({ markers })
+      }
+    })
+
+    database.ref(`events/${EVENT_ID}/polylines`).on("value", (snapshot) => {
+      const polylines = snapshot.val()
+      // console.log(markers)
+      if ( polylines ) {
+        this.setState({ polylines })
+      }
+    })
+
+
+    getEventInfo(EVENT_ID)
+      .then(event => this.setState({ event }))
+
+    //App is done if currentMove = numberOfTurns
+    database.ref(`events/${EVENT_ID}/currentTurn`).on("value", (snapshot) => { //Since we start counting turns at 0
+      const turnCount = snapshot.val()
+      if ( turnCount >= MAX_TURNS ) {
+        console.log('App Ended')
+      } else {
+        this.setState({ turnCount })
+      }
+    })
 
   }
 
-  onRegionChangeComplete = (region) => {
-  this.setState({ region });
-}
+  renderMarkerColor = (number) => {
+    const trueNumber = number % 4;
+
+    return colorDict[trueNumber]
+  }
+
+  renderPolylineColor = (number) => {
+    const trueNumber = (number) % 4;
+
+    return colorDict[trueNumber]
+  }
+
+  //When user presses anywhere on the map
+  makeMove = (coordinate) => {
+    //If user is the targeted current player
+    if (this.state.currentPlayer == playerDict[USER_ID]) {
+      const lastId = this.state.markers.length;
+
+      const newMarker = {
+        coordinate,
+        id: `${lastId}`
+      }
+
+      const oldMarker = {
+        ...this.state.markers[this.state.markers.length-1]
+      }
+
+      const newMarkers = [
+        ...this.state.markers,
+        {
+          ...newMarker
+        }
+      ]
+      this.setState({ markers: newMarkers });
+
+      newId = parseInt(playerDict[USER_ID]) + 1 ;
+      if ( newId > 3 ) {
+        newId = 0
+      }
+
+      updateCurrentTurn(EVENT_ID, parseInt(this.state.turnCount) + 1);
+      updatePlayerTurn(EVENT_ID, newId)
+      setMarkers(EVENT_ID, newMarkers)
+      this.createPolyline(oldMarker, newMarker)
+
+      //Increment player value on firebase
+    } else {
+      // console.log(playerDict[USER_ID])
+      // console.log(this.state.currentPlayer)
+      // console.log("It's not this player's move")
+    }
+  }
+
+  setModalVisible = (visible) => this.setState({modalVisible: visible})
+
 
   render() {
     return (
-      <View>
-        <CircleMenu
-              bgColor="#E74C3C"
-              items={this.items}
-              onPress={this.onPress}
+      <View style={styles.container}>
+        <Modal
+           animationType="slide"
+           transparent={false}
+           visible={this.state.modalVisible}
+           onRequestClose={() => {alert("Modal has been closed.")}}
+         >
+           <View style={{flex: 1, backgroundColor: 'red' }}/>
+         </Modal>
+        <MapView
+          style={styles.mapStyle}
+          region={this.state.region}
+          onPress={this.onMapPress}
+          zoomEnabled={true}
+          pitchEnabled={false}
+          onRegionChangeComplete={this.onRegionChangeComplete}
+        >
+        {this.state.markers.map((marker, index) => {
+          return (
+            <MapView.Marker
+              coordinate={marker.coordinate}
+              key={index}
+            >
+              <Animated.View style={styles.markerWrap}>
+                <View style = {[styles.marker,
+                      { backgroundColor: this.renderMarkerColor(index)}
+                    ]}
+                />
+              </Animated.View>
+            </MapView.Marker>
+          );
+        })}
+        {this.state.polylines.map((polyline, index) => {
+          const strokeColor = this.renderPolylineColor(index)
+          return(
+            <MapView.Polyline
+              key={polyline.id}
+              coordinates={polyline.coordinates}
+              strokeColor={strokeColor}
+              fillColor="rgba(255,0,0)"
+              strokeWidth={7}
+            />
+          )
+        })}
+        </MapView>
+        <View style={styles.buttonContainer2}>
+          <Button
+            large
+            title="List All Coords"
+            backgroundColor="#009688"
+            icon={{ name: 'map' }}
+            onPress={() => this.printMarkers()}
+            buttonStyle={{ borderRadius: 10 }}
           />
+        </View>
       </View>
-
-
-
     )
   }
 }
@@ -215,19 +332,49 @@ const styles = {
   mapStyle: {
     flex: 1
   },
-  buttonContainer: {
+  buttonContainer1: {
     position: 'absolute',
     flexDirection: 'row',
     justifyContent: 'center',
+    bottom: 100,
+    left: 0,
+    right: 0
+  },
+  buttonContainer2: {
+    position: 'absolute',
     bottom: 20,
     left: 0,
     right: 0
   },
   buttonStyle: {
     flex: 1,
-    width: 70,
+    width: 160,
     borderRadius: 10
-  }
+  },
+  viewContainer: {
+    flex: 1,
+    bottom: 0,
+    backgroundColor: "#fc9d05",
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 15
+  },
+  marker: {
+    width: 18,
+    height: 18,
+    borderRadius: 22,
+    backgroundColor: "rgba(255,0,0, 0.9)",
+  },
+  markerWrap: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }
 
-export default lineScreen;
+
+
+export default MapScreen;

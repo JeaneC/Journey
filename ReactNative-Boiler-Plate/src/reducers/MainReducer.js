@@ -4,6 +4,7 @@ const MainReducerDefaultState = {
   uid: null,
   name: null,
   val: null,
+  token: null
 }
 
 export default (state = MainReducerDefaultState, action) => {
@@ -18,17 +19,22 @@ export default (state = MainReducerDefaultState, action) => {
         ...state,
         val: action.payload
       }
-      case 'UPDATE_LOGIN':
-        return {
-          ...state,
-          uid: action.payload.id,
-          name: action.payload.name
-        }
-      case 'UPDATE_NAME':
-        return {
-          ...state,
-          name: action.payload
-        }
+    case 'UPDATE_TOKEN':
+      return {
+        ...state,
+        token: action.payload
+      }
+    case 'UPDATE_LOGIN':
+      return {
+        ...state,
+        uid: action.payload.id,
+        name: action.payload.name
+      }
+    case 'UPDATE_NAME':
+      return {
+        ...state,
+        name: action.payload
+      }
     default:
       return state;
   }
