@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "boiler-plate",
+    "name": "Journey",
     "description": "An empty new project",
-    "slug": "boiler-plate",
+    "slug": "Journey",
     "privacy": "public",
     "sdkVersion": "22.0.0",
     "version": "1.0.0",

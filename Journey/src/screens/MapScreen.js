@@ -20,7 +20,7 @@ import { updateResults, updateCategory } from '../actions/index';
 import startingMarker from '../assets/images/start.png'
 
 const { height, width } = Dimensions.get('window');
-const EVENT_ID = "event0001";
+let EVENT_ID = "event0001";
 
 let id = 1;
 
@@ -29,6 +29,9 @@ import fitness from '../assets/menu/fitness.png';
 import food from '../assets/menu/food.png';
 import hotel from '../assets/menu/hotel.png';
 import shopping from '../assets/menu/shopping.png';
+
+import backArrow from '../assets/images/back_black.png';
+
 
 const colorDict = {
   "0" : "#e74c3c",
@@ -64,7 +67,7 @@ class MapScreen extends Component {
 
     // const eventId = "event0001"
     const eventId = this.props.eventId
-
+    EVENT_ID = eventId
     console.log('Event Height', height)
     console.log('Event Width', width)
 
@@ -375,6 +378,9 @@ class MapScreen extends Component {
           pitchEnabled={false}
           onRegionChangeComplete={this.onRegionChangeComplete}
         >
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <Image source={backArrow} style={{ marginLeft: 20, marginTop: 23, width: 20, height: 18 }}/>
+          </TouchableOpacity>
           {
             this.state.visible
             ?
@@ -436,16 +442,6 @@ class MapScreen extends Component {
           )
         })}
         </MapView>
-        <View style={styles.buttonContainer2}>
-          <Button
-            large
-            title="List All Coords"
-            backgroundColor="#009688"
-            icon={{ name: 'map' }}
-            onPress={() => this.printMarkers()}
-            buttonStyle={{ borderRadius: 10 }}
-          />
-        </View>
       </View>
     )
   }
@@ -456,7 +452,7 @@ const IMAGE_HEIGHT = 77.0/2.0
 const CIRCLE_RADIUS = 30.0;
 
 const CENTERX = width/2.0 + 0;
-const CENTERY = height/2.0 + 4;
+const CENTERY = height/2.0 - 4;
 
 const styles = {
   container: {

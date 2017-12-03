@@ -16,9 +16,8 @@ import user0 from '../assets/events/profiles/0.png';
 import user1 from '../assets/events/profiles/1.png';
 import user3 from '../assets/events/profiles/3.png';
 
-import backArrow from '../assets/images/back_white.png';
+import backArrow from '../assets/images/back_black.png';
 
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 
 const uuidv4 = require('uuid/v4');
 
@@ -69,7 +68,7 @@ class CreateEventScreen extends Component {
             <Image source={checkIcon} style={{ marginLeft: 10, width: 20, height: 18}}/>
           </TouchableOpacity>
         </View>
-        <View style={{ flex: 1, marginBottom: 20, backgroundColor: 'white'}} >
+        <View style={{ flex: 1, backgroundColor: 'white'}} >
           <ScrollView>
             <Text style={styles.headerStyle}>Basic Info</Text>
             <TextInput
@@ -84,33 +83,6 @@ class CreateEventScreen extends Component {
               value={this.state.description}
             />
             <Text style={styles.headerStyle}>Start Date</Text>
-            <Calendar
-            // Initially visible month. Default = Date()
-            // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
-            minDate={'2017-05-10'}
-            // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
-            maxDate={'2018-05-30'}
-            // Handler which gets executed on day press. Default = undefined
-            onDayPress={(day) => {this.setState({startdate : day})}}
-            // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
-            monthFormat={'MM-dd-yyyy'}
-            // Handler which gets executed when visible month changes in calendar. Default = undefined
-            onMonthChange={(month) => {console.log('month changed', month)}}
-            // Hide month navigation arrows. Default = false
-            hideArrows={true}
-            // Replace default arrows with custom ones (direction can be 'left' or 'right')
-            renderArrow={(direction) => (<Arrow />)}
-            // Do not show days of other months in month page. Default = false
-            hideExtraDays={true}
-            // If hideArrows=false and hideExtraDays=false do not switch month when tapping on greyed out
-            // day from another month that is visible in calendar page. Default = false
-            disableMonthChange={true}
-            // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
-            firstDay={1}
-            // Hide day names. Default = false
-            hideDayNames={true}
-            style={{padding: 10, marginTop: 5}}
-          />
             <TextInput
               style={styles.inputStyle}
               onChangeText={(startdate) => this.setState({startdate})}
@@ -137,17 +109,6 @@ class CreateEventScreen extends Component {
             </View>
           </ScrollView>
         </View>
-        <View style={styles.botBar}>
-          <TouchableOpacity style={styles.iconBox}>
-            <Image source={calendar} style={styles.iconBox}/>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconBox}>
-            <Image source={map} style={styles.iconBox} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconBox}>
-            <Image source={user} style={styles.iconBox3} />
-          </TouchableOpacity>
-        </View>
       </View>
     )
   }
@@ -167,6 +128,7 @@ const styles = {
    flexDirection: "row",
    alignItems: 'center',
    borderColor: "#d3d3d3",
+   backgroundColor: "white",
    justifyContent: 'space-between',
    borderTopWidth: 1,
    height: 55,
