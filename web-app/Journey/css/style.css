@@ -1,64 +1,53 @@
 .top-navbar {
-      height: 54px;
-      width: 100%;
-      background: #597BB5;
-      text-align: center;
-      outline: 0 none;
-      border: 0 none;
-      box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.15);
-    }
-
-#navbar-title {
-  color: white;
-  font-size: 24px;
-  padding-top: 11px;
-  padding-bottom: 11px;
-  font-family: SFProText-Regular;
-  letter-spacing: 1px;
-
-
+	height: 54px;
+	width: 100%;
+	background: #597BB5;
+	text-align: center;
+	outline: 0 none;
+	border: 0 none;
+	box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.15);
 }
-
-    .tab-bar, .nav-bar {
-        height : 55px;
-    }
-
-    .tab-bar, .nav-bar, .main-content {
-        position : fixed;
-        width    : 100%;
-    }
-
-    .tab-bar {
-
-      height: 54px;
-      width: 100%;
-      background: white;
-      text-align: center;
-      overflow: hidden;
-      position: fixed;
-      bottom: 0;
-      outline: 0 none;
-      border: 0 none;
-      box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.10);
-
-        display          : flex;
-        justify-content  : space-around;
-        list-style       : none;
-        margin           : 0;
-        padding          : 10px 0 0 0;
-        z-index          : 3;
-        background-color : white;
-        transition       : all 600ms cubic-bezier(1, 0, 0, 1);
-    }
-
-    .tab-bar > li {
-        text-align : center;
-    }
-
-    .tab-bar > li:not(.selected) {
-        color : #757575;
-    }
-
-    .tab-bar > li.selected {
-        color : #405C96;
-    }
+#navbar-title {
+	color: white;
+	font-size: 24px;
+	padding-top: 11px;
+	padding-bottom: 11px;
+	font-family: SFProText-Regular;
+	letter-spacing: 1px;
+}
+.tab-bar, .nav-bar {
+	height: 55px;
+}
+.tab-bar, .nav-bar, .main-content {
+	position: fixed;
+	width: 100%;
+}
+.tab-bar {
+	height: 54px;
+	width: 100%;
+	background: white;
+	text-align: center;
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	outline: 0 none;
+	border: 0 none;
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+	margin: 0;
+	padding: 10px 0 0 0;
+	z-index: 3;
+	background-color: white;
+	transition: all 600ms cubic-bezier(1, 0, 0, 1);
+	box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.10);
+}
+.tab-bar>li {
+	text-align: center;
+}
+.tab-bar>li:not(.selected) {
+	color: #757575;
+}
+.tab-bar>li.selected {
+	color: #405C96;
+}
