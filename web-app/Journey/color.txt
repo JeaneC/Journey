@@ -1,0 +1,6 @@
+         x    y
+Blue	-99	-93
+Red	-24	-100
+Orange	28	-54
+Yellow	-24	23
+Green	-99	7

@@ -1,0 +1,29 @@
+body {
+    background-color: #405C96;
+    font-family : "SF Pro Text", sans-serif;
+}
+
+#about-logo {
+    margin-top: 100px;
+    text-align: center;
+}
+
+#about-app-intro {
+    font-size: 16px;
+    line-height: 28px;
+    margin: 40px 40px auto 40px;
+    color: white;
+    letter-spacing: 1pt;
+}
+
+#about-app-intro > span {
+    font-weight: bold;
+}
+
+#about-created-by {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 40px 0;
+    text-align: center;
+    color: white;
+}
