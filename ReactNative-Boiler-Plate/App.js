@@ -6,7 +6,7 @@ import { StackNavigator } from 'react-navigation';
 import {
   LoginScreen,
   SecondScreen,
-  ThirdScreen,
+  CreateEventScreen,
   MapScreen,
   TestScreen,
   EventScreen
@@ -27,14 +27,14 @@ export default class App extends React.Component {
           screen: SecondScreen,
           navigationOptions: {header : null}
         },
-        third: {
-          screen: ThirdScreen,
-          navigationOptions: {header : null}
-        },
         event: {
           screen: EventScreen,
           navigationOptions: {header : null}
         },
+        createEvent: {
+          screen: CreateEventScreen,
+          navigationOptions: {header : null}
+        }
       }, {
         lazy : true,
       },
