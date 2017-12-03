@@ -1,3 +1,9 @@
+
+body { background-color: #FBFBFB;}
+
+h1 h2 h3 h4 h5 h6 {
+  font-family: SFProText-Regular;
+}
 .top-navbar {
 	height: 54px;
 	width: 100%;
