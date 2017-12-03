@@ -12,3 +12,6 @@ export const loginFacebook = (data) => ({ type: 'UPDATE_LOGIN', payload: data })
 export const storeToken = (token) => ({ type: "UPDATE_TOKEN", payload: token})
 
 export const updateEvents = (events) => ({ type: "UPDATE_EVENTS", payload: events})
+
+export const updateEventId = (eventId) => ({ type: "UPDATE_EVENT_ID", payload: eventId})
+export const updateEventTurns = (turns) => ({ type: "UPDATE_EVENT_TURNS", payload: turns})
