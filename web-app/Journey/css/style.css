@@ -19,7 +19,17 @@
 
 }
 
-.bottom-navbar{
+    .tab-bar, .nav-bar {
+        height : 55px;
+    }
+
+    .tab-bar, .nav-bar, .main-content {
+        position : fixed;
+        width    : 100%;
+    }
+
+    .tab-bar {
+
       height: 54px;
       width: 100%;
       background: white;
@@ -30,8 +40,25 @@
       outline: 0 none;
       border: 0 none;
       box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.10);
+
+        display          : flex;
+        justify-content  : space-around;
+        list-style       : none;
+        margin           : 0;
+        padding          : 10px 0 0 0;
+        z-index          : 3;
+        background-color : white;
+        transition       : all 600ms cubic-bezier(1, 0, 0, 1);
     }
 
-.bottom-navbar a {
-  padding: 14px 16px;
-}
+    .tab-bar > li {
+        text-align : center;
+    }
+
+    .tab-bar > li:not(.selected) {
+        color : #757575;
+    }
+
+    .tab-bar > li.selected {
+        color : #405C96;
+    }
