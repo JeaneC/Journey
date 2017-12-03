@@ -9,6 +9,8 @@ import user from '../assets/tabbar/user.png';
 import map from '../assets/tabbar/map.png';
 import calendar from '../assets/tabbar/calendar.png';
 
+import backArrow from '../assets/images/back_white.png';
+
 import yhack from '../assets/images/yhack.png';
 import participants0 from '../assets/images/participants0.png';
 import participants from '../assets/images/participants.png';
@@ -104,7 +106,7 @@ class EventScreen extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={styles.navBar}>
-          <View style={{ flex: 1 }}/>
+          <View style={{ flex: 1}} />
           <Text style={{ flex: 4 , fontSize: 22, color: "white", textAlign: 'center'}}>Events</Text>
           <TouchableOpacity style={{ flex: 1, }} onPress={this.createEvent}>
             <Image source={addIcon} style={{ marginLeft: 10, width: 18, height: 18}}/>
@@ -135,18 +137,6 @@ class EventScreen extends Component {
           </View>
           </ScrollView>
         </View>
-        <View style={styles.botBar}>
-          <TouchableOpacity style={styles.iconBox}>
-            <Image source={calendar} style={styles.iconBox}/>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconBox}>
-            <Image source={map} style={styles.iconBox} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconBox}>
-            <Image source={user} style={styles.iconBox3} />
-          </TouchableOpacity>
-        </View>
-
       </View>
     )
   }

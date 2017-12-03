@@ -9,7 +9,8 @@ import {
   CreateEventScreen,
   MapScreen,
   TestScreen,
-  EventScreen
+  EventScreen,
+  CategorySelectionScreen
 } from './src/screens/';
 
 export default class App extends React.Component {
@@ -33,6 +34,10 @@ export default class App extends React.Component {
         },
         createEvent: {
           screen: CreateEventScreen,
+          navigationOptions: {header : null}
+        },
+        categorySelection: {
+          screen: CategorySelectionScreen,
           navigationOptions: {header : null}
         }
       }, {
