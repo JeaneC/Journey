@@ -1,4 +1,13 @@
-hr { color: red;}
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 3px;
+    width: 275px;
+    border: solid 0.5px rgba(168, 182, 200, 0.3);
+}
 
 .user-name {
 	font-size: 12px;
@@ -14,18 +23,12 @@ hr { color: red;}
 	object-fit: contain;
 }
 
-.line-break {
-	width: 162.5px;
-	height: 1.5px;
-	border: solid 0.5px rgba(168, 182, 200, 0.3);
-}
-
 .favorites {
-  padding-top: 100px;
-	font-family: SFProText;
-	font-size: 20px;
+  padding-top: 20px;
+	font-family : "SF Pro Text", sans-serif;
+	font-size: 16px;
 	font-weight: 600;
-	color: #323b45;
+	color: #4f4e4e;
 }
 
 .btn:hover, .btn:active, .btn:focus {
