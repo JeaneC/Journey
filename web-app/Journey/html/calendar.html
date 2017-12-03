@@ -6,16 +6,22 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <link rel="stylesheet" href="../css/calendar.css">
+    <link rel="stylesheet" href="../css/style.css">
+
     <meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 <body>
-<div id="app-screen" class="screen tab-shown nav-shown">
-    <div class="nav-bar">
-        New Event
-        <div class="new-button">
-            <i class="material-icons">add</i>
-        </div>
+
+<div id="app-screen" class="screen  nav-shown">
+
+  <!-- Navbar -->
+  <nav class="top-navbar">
+    <div class="" id="navbar-title">New Event</div>
+    <div class="new-button">
+        <i class="material-icons">add</i>
     </div>
+  </nav>
+
     <div class="main-content">
         <ul id="main-content-events">
             <h3>Basic Info</h3>
@@ -67,24 +73,20 @@
             </li>
         </ul>
     </div>
-    <ul class="tab-bar">
-        <li class="selected">
-            <div>
-                <i class="material-icons">event_note</i>
-            </div>
-            <div>
-                Events
-            </div>
-        </li>
-        <li>
-            <div>
-                <i class="material-icons">memory</i>
-            </div>
-            <div>
-                About
-            </div>
-        </li>
-    </ul>
 </div>
+
+<!-- Tabbar -->
+<ul class="tab-bar">
+  <li class="selected">
+    <div> <img src="../icon/filled/user.svg"></div>
+  </li>
+  <li>
+    <div> <img src="../icon/map-icon.svg"></a> </div>
+  </li>
+   <li>
+    <div> <img src="../icon/calendar-icon.svg"> </div>
+   </li>
+</ul>
+
 </body>
 </html>
