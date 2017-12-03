@@ -20,6 +20,8 @@ import user3 from '../assets/events/profiles/3.png';
 import user4 from '../assets/events/profiles/4.png';
 import user5 from '../assets/events/profiles/5.png';
 
+import addIcon from '../assets/images/add.png';
+
 
 import { updateEventId, updateEventTurns } from '../actions/index';
 import styled from 'styled-components/native'
@@ -107,7 +109,7 @@ class EventScreen extends Component {
           <View style={{ flex: 1 }}/>
           <Text style={{ flex: 4 , fontSize: 22, color: "white", textAlign: 'center'}}>Events</Text>
           <TouchableOpacity style={{ flex: 1, }} onPress={this.createEvent}>
-            <Text style={{ color: "white", fontSize: 36, paddingRight: 5, textAlign:'center'}}>+</Text>
+            <Image source={addIcon} style={{ marginLeft: 10, width: 18, height: 18}}/>
           </TouchableOpacity>
         </View>
         <View style={{ flex: 8.5 }}>
@@ -156,8 +158,9 @@ const styles = {
    navBar: {
     flexDirection: 'row',
     backgroundColor: "#597bb5",
-    paddingTop: 20,
-    height: 55,
+    paddingTop: 15,
+    paddingBottom: 5,
+    height: 65,
     justifyContent: 'center',
     alignItems: 'center'
   },
