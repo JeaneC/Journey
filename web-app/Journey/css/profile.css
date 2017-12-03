@@ -13,3 +13,30 @@ hr { color: red;}
 	height: 406px;
 	object-fit: contain;
 }
+
+.line-break {
+	width: 162.5px;
+	height: 1.5px;
+	border: solid 0.5px rgba(168, 182, 200, 0.3);
+}
+
+.favorites {
+  padding-top: 125px;
+	width: 162.5px;
+	height: 9.5px;
+	font-family: SFProText;
+	font-size: 8px;
+	font-weight: 600;
+	text-align: left;
+	color: #323b45;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+  outline: 0;
+  cursor: pointer;
+ }
+
+  #card-pressed:active{
+  transform: matrix(0.95, 0, 0, 0.95, 0, 0);
+  opacity: 0.8;
+ }

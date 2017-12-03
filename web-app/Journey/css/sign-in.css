@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 /* Div centered & content inside div centered */
 #div-outer-centered {
   text-align: center;
@@ -15,14 +9,6 @@
   margin: 0 auto;
 }
 
-.btn-fb {
-  cursor: pointer;
-}
-
- #btn-pressed:active{
- transform: matrix(0.95, 0, 0, 0.95, 0, 0);
- opacity: 0.8;
-}
 
 .btn {
   font-size: 0.8rem;
