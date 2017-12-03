@@ -1,0 +1,33 @@
+.top-navbar {
+      height: 54px;
+      width: 100%;
+      background: #597BB5;
+      text-align: center;
+      outline: 0 none;
+      border: 0 none;
+      box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.15);
+    }
+
+#navbar-title {
+  color: white;
+  font-size: 24px;
+}
+
+
+
+.bottom-navbar{
+      height: 54px;
+      width: 100%;
+      background: white;
+      text-align: center;
+      overflow: hidden;
+      position: fixed;
+      bottom: 0;
+      outline: 0 none;
+      border: 0 none;
+      box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.10);
+    }
+
+.bottom-navbar a {
+  padding: 14px 16px;
+}
