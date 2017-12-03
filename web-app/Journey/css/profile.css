@@ -21,13 +21,10 @@ hr { color: red;}
 }
 
 .favorites {
-  padding-top: 125px;
-	width: 162.5px;
-	height: 9.5px;
+  padding-top: 100px;
 	font-family: SFProText;
-	font-size: 8px;
+	font-size: 20px;
 	font-weight: 600;
-	text-align: left;
 	color: #323b45;
 }
 
