@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="38px" height="38px" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>start</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Event-(-show-)" transform="translate(-169.000000, -497.000000)" fill-rule="nonzero" fill="#5D5D5D">
+            <g id="lines" transform="translate(61.000000, 246.000000)">
+                <path d="M127,286 C135.836556,286 143,278.836556 143,270 C143,261.163444 135.836556,254 127,254 C118.163444,254 111,261.163444 111,270 C111,278.836556 118.163444,286 127,286 Z M127,289 C116.50659,289 108,280.49341 108,270 C108,259.50659 116.50659,251 127,251 C137.49341,251 146,259.50659 146,270 C146,280.49341 137.49341,289 127,289 Z M127,278 C122.581722,278 119,274.418278 119,270 C119,265.581722 122.581722,262 127,262 C131.418278,262 135,265.581722 135,270 C135,274.418278 131.418278,278 127,278 Z M127,281 C133.075132,281 138,276.075132 138,270 C138,263.924868 133.075132,259 127,259 C120.924868,259 116,263.924868 116,270 C116,276.075132 120.924868,281 127,281 Z" id="start"></path>
+            </g>
+        </g>
+    </g>
+</svg>
