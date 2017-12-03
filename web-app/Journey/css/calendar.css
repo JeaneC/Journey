@@ -188,3 +188,7 @@ body {
 .name{
     margin: 0;
 }
+
+#selector{
+    color: darkgray;
+}

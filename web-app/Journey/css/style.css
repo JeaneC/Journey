@@ -63,3 +63,16 @@ h1 h2 h3 h4 h5 h6 {
 .tab-bar>li.selected {
 	color: #405C96;
 }
+
+.btn-fb {
+  cursor: pointer;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+ #btn-pressed:active{
+ transform: matrix(0.95, 0, 0, 0.95, 0, 0);
+ opacity: 0.8;
+}
