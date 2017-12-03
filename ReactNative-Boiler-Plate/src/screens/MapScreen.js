@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Animated, Modal, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Animated, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { MapView, Location, Constants, Permissions } from 'expo';
 import { Icon, Button } from 'react-native-elements';
 import {
@@ -15,6 +15,7 @@ import qs from 'qs';
 import axios from 'axios';
 import polyline from 'google-polyline'
 import { connect } from 'react-redux';
+import { updateResults, updateCategory } from '../actions/index';
 
 import startingMarker from '../assets/images/start.png'
 
@@ -86,7 +87,6 @@ class MapScreen extends Component {
       markers: [
 
       ],
-      modalVisible: false,
       polylines : [
          {
           coordinates: [
@@ -100,13 +100,36 @@ class MapScreen extends Component {
       userId,
       eventId,
       maxTurns,
-      clicked: false
+      latitude: null,
+      longitude: null,
+      clicked: false,
+      category: null,
+      visible: false
 
     };
 
     this.onMapPress = this.onMapPress.bind(this);
 
   }
+
+  _getLocationAsync = async () => {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+
+    if (status !== 'granted') {
+      return this.onError('Please Grant Location Permissions')
+    }
+
+    let { coords } = await Location.getCurrentPositionAsync({});
+
+    const region = {
+      longitudeDelta: 0.015,
+      latitudeDelta: 0.015,
+      latitude: coords.latitude,
+      longitude: coords.longitude,
+    }
+
+    this.setState({ region });
+  };
 
   createPolyline = async (oldMarker, newMarker) => {
     if (this.state.turnCount < 1) {
@@ -165,7 +188,29 @@ class MapScreen extends Component {
 
   }
 
+  searchFacebookPlaces = async (category) => {
+    // https://graph.facebook.com/v2.11/search?type=place&{parameters}&fields={place information}
+    this.props.updateCategory(category)
+    const token = "EAAfhqzyLHEABAOPaEmtEDCM5YWlCZCDBjCG2IyFVimGclVtEMCZCmpDlubSjFiUMxalhKqWcBSw9i80dyXFGN4hQYHDRoFtUipnIxsKYKArJI4weQ3ZAFXYbN4lz1i0UI14tRpNBQZCHLAT60apm8Ii5CqjHBJgFc6v97safIv1egGIxJtS2hpMbqFxwp9ZCZCFmaGFXSZBUaLqIAqYVxz7";
+    const latitude = 40.72004412623778;
+    const longitude = -73.8111714306203
+    const center = `${this.state.region.latitude},${this.state.region.longitude}`
+    const radius = 1000;
+    const ROOT_URL = "https://graph.facebook.com/v2.11/search?type=place&"
+    const categories = `['${category}']`;
+    const midQuery = `center=${center}&distance=${radius}`
+
+
+    //ARTS_ENTERTAINMENT, EDUCATION, FITNESS_RECREATION, FOOD_BEVERAGE, HOTEL_LODGING, MEDICAL_HEALTH, SHOPPING_RETAIL, TRAVEL_TRANSPORTATION.
+    const query = `${ROOT_URL}${midQuery}&fields=name,picture&access_token=${token}&categories=${categories}`
+    console.log(query)
+    const response = await axios.get(query)
+    const { data } = response.data
+    return data
+  }
+
   onMapPress(e) {
+    console.log('map press first')
     // Commment to prevent marker creating
 
     this.makeMove(e.nativeEvent.coordinate)
@@ -194,6 +239,7 @@ class MapScreen extends Component {
   componentDidMount() {
     console.log('pre event')
     //This function will update whenever there is a change in a specific value
+    this._getLocationAsync()
     database.ref(`events/${EVENT_ID}/currentPlayer`).on("value", (snapshot) => {
       const currentPlayer = snapshot.val()
       if (currentPlayer != null || currentPlayer != undefined ) {
@@ -228,7 +274,7 @@ class MapScreen extends Component {
       const turnCount = snapshot.val()
       if ( turnCount >= this.state.maxTurns ) {
         console.log('App Ended')
-        // this.p
+        this.props.navigation.goBack()
       } else {
         this.setState({ turnCount })
       }
@@ -252,7 +298,7 @@ class MapScreen extends Component {
   makeMove = (coordinate) => {
     //If user is the targeted current player
     if (this.state.currentPlayer == playerDict[this.state.userId]) {
-      this.setState({ clicked: true })
+      this.setState({ clicked: true, visible: true })
       const lastId = this.state.markers.length;
 
       const newMarker = {
@@ -279,6 +325,7 @@ class MapScreen extends Component {
       ]
       this.setState({ markers: newMarkers });
 
+
       newId = parseInt(playerDict[this.state.userId]) + 1 ;
       if ( newId > 3 ) {
         newId = 0
@@ -289,6 +336,9 @@ class MapScreen extends Component {
       setMarkers(EVENT_ID, newMarkers)
       this.createPolyline(oldMarker, newMarker)
 
+      //update location to redux
+      //move person to next screen
+
       //Increment player value on firebase
     } else {
       // console.log(playerDict[this.state.userId])
@@ -297,12 +347,24 @@ class MapScreen extends Component {
     }
   }
 
-  setModalVisible = (visible) => this.setState({modalVisible: visible})
 
+  selectCategory = async (category) => {
+    console.log('CATEGORY')
+    const result = await this.searchFacebookPlaces(category)
+    const wait2 = this.props.updateResults(result)
+    this.setState({ category, visbile: false })
+    this.props.navigation.navigate('categorySelection')
+    //update category to redux
+  }
+
+  fetchCategorySearch = () => {
+
+  }
 
   render() {
     return (
       <View style={styles.container}>
+
         <MapView
           style={styles.mapStyle}
           region={this.state.region}
@@ -311,21 +373,30 @@ class MapScreen extends Component {
           pitchEnabled={false}
           onRegionChangeComplete={this.onRegionChangeComplete}
         >
-          <TouchableOpacity >
-            <Image source={art} style={styles.artStyle}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image source={food} style={styles.foodStyle} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image source={shopping} style={styles.shoppingStyle} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image source={hotel} style={styles.hotelStyle} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image source={fitness} style={styles.fitnessStyle} />
-          </TouchableOpacity>
+          {
+            this.state.visible
+            ?
+            <View>
+            <TouchableOpacity onPress={() => this.selectCategory('ARTS_ENTERTAINMENT')}>
+              <Image source={art} style={styles.artStyle} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.selectCategory('FOOD_BEVERAGE')}>
+              <Image source={food} style={styles.foodStyle} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.selectCategory('SHOPPING_RETAIL')}>
+              <Image source={shopping} style={styles.shoppingStyle} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.selectCategory('HOTEL_LODGING')}>
+              <Image source={hotel} style={styles.hotelStyle} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.selectCategory('FITNESS_RECREATION')}>
+              <Image source={fitness} style={styles.fitnessStyle} />
+            </TouchableOpacity>
+            </View>
+            :
+            <View></View>
+          }
+
 
         {this.state.markers.map((marker, index) => {
           // console.log(index)
@@ -383,7 +454,7 @@ const IMAGE_HEIGHT = 77.0/2.0
 const CIRCLE_RADIUS = 30.0;
 
 const CENTERX = width/2.0 + 0;
-const CENTERY = height/2.0 + 6;
+const CENTERY = height/2.0 + 4;
 
 const styles = {
   container: {
@@ -467,9 +538,18 @@ const mapStateToProps = state => {
   return {
     uid: state.main.uid,
     eventId: state.main.eventId,
-    numberOfTurns: state.main.eventTurns
+    numberOfTurns: state.main.eventTurns,
+    token: state.main.token
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    updateResults: (data) => { dispatch(updateResults(data)) },
+    updateCategory: (data) => { dispatch(updateCategory(data)) },
 
-export default connect(mapStateToProps)(MapScreen);
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapScreen);
