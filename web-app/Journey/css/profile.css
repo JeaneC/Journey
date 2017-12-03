@@ -5,8 +5,14 @@ hr {
     margin-left: auto;
     margin-right: auto;
     border-width: 3px;
-    width: 250px;
+    width: 200px;
     border: solid 0.5px rgba(168, 182, 200, 0.3);
+}
+
+.setting-icon {
+  padding-top:1.8cm;
+  padding-left: 93%;
+	object-fit: contain;
 }
 
 .user-name {
