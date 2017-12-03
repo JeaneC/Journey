@@ -4,9 +4,11 @@ import { connect } from 'react-redux'
 import { Icon } from 'react-native-elements';
 
 import EventBox from '../components/EventBox';
-import user from '../assets/images/user.png';
-import map from '../assets/images/map.png';
-import calendar from '../assets/images/calendar.png';
+
+import user from '../assets/tabbar/user.png';
+import map from '../assets/tabbar/map.png';
+import calendar from '../assets/tabbar/calendar.png';
+
 import yhack from '../assets/images/yhack.png';
 import participants0 from '../assets/images/participants0.png';
 import participants from '../assets/images/participants.png';
@@ -30,10 +32,6 @@ class EventScreen extends Component {
 
   constructor(props) {
     super(props)
-
-    console.log('props are')
-    console.log(this.props)
-    console.log()
 
     this.state = {
       events: this.props.events ? this.props.events : {},
@@ -142,10 +140,10 @@ class EventScreen extends Component {
             <Image source={calendar} style={styles.iconBox}/>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconBox}>
-            <Image source={map} />
+            <Image source={map} style={styles.iconBox} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconBox}>
-            <Image source={user} />
+            <Image source={user} style={styles.iconBox3} />
           </TouchableOpacity>
         </View>
 
@@ -187,12 +185,21 @@ const styles = {
     borderColor: "#d3d3d3",
     justifyContent: 'space-between',
     borderTopWidth: 1,
-    flex: 1.5
+    height: 55,
   },
   iconBox : {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    height: 25,
+    width: 25
+  },
+  iconBox3 : {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 35,
+    width: 25
   }
 }
 
