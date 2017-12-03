@@ -30,6 +30,11 @@ export const getEvents = async (eventId) => {
     })
 }
 
+
+export const updateEvents = async (events) => {
+  database.ref(`events/`).set(events);
+}
+
 export const updatePlayerTurn = async (eventId, val) => {
   database.ref(`events/${eventId}/currentPlayer`).set(val);
 }
