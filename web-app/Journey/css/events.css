@@ -64,11 +64,20 @@ body {
 }
 
 .nav-bar {
-    padding          : 0;
+    text-align: center;
+    padding          : 18px 0;
     margin           : 0;
     z-index          : 1;
     background-color : #405C96;
     transition       : all 600ms cubic-bezier(1, 0, 0, 1);
+    color: white;
+}
+
+.new-button {
+    position: absolute;
+    right: 20px;
+    top: 16px;
+    color: white;
 }
 
 .main-content {
