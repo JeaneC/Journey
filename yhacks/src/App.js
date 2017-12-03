@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
 
 import { provider, firebase } from './firebase/firebase';
+import art from './assets/menu/art.png';
+import fitness from './assets/menu/fitness.png';
+import food from './assets/menu/food.png';
+import hotel from './assets/menu/hotel.png';
+import shopping from './assets/menu/shopping.png';
 
 class App extends Component {
   componentDidMount() {
@@ -43,12 +48,6 @@ class App extends Component {
         font-weight: 400;
         line-height: 1.6;
         margin: 0;
-        color: var(--color-grey-dark-2);
-        background-image: linear-gradient(
-          to right bottom,
-          var(--color-primary-light),
-          var(--color-primary-dark));
-        background-repeat: no-repeat;
 
         min-height: 100vh;
       }
@@ -81,10 +80,29 @@ class App extends Component {
     const Firebase = styled.button`
     `
 
+    const PhoneContainer = styled.div`
+      background-color: 'black';
+      border: 1px solid black;
+      height: 667px;
+      width: 375px
+    `
+
+    const ArtImage = styled.img`
+      position: absolute;
+      margin-top: 667.0/2.0;
+      margin-left: 375:.0/2.0;
+    `
+    const FoodImage = styled.img`
+      position: absolute;
+      margin-top: 667.0/2.0;
+      margin-left: 375:.0/2.0;
+    `
     return (
-      <div>
-        <Firebase onClick={this.signIn}>Login</Firebase>
-      </div>
+      <PhoneContainer>
+        <ArtImage src={art} />
+        <FoodImage src={food} />
+        {/* <Firebase onClick={this.signIn}>Login</Firebase> */}
+      </PhoneContainer>
     );
   }
 }

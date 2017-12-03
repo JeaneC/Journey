@@ -54,7 +54,7 @@ class EventScreen extends Component {
   }
 
   createEvent = () => {
-
+    this.props.navigation.navigate('createEvent')
   }
 
   onEventPress = async (key) => {

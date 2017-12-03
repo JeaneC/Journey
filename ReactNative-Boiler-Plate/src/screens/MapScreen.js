@@ -64,6 +64,9 @@ class MapScreen extends Component {
     // const eventId = "event0001"
     const eventId = this.props.eventId
 
+    console.log('Event Height', height)
+    console.log('Event Width', width)
+
     // console.log('MapScreen')
     // console.log(userId)
     // console.log(eventId)
@@ -364,7 +367,7 @@ class MapScreen extends Component {
 
 const IMAGE_WIDTH = 102.0/2.0;
 const IMAGE_HEIGHT = 77.0/2.0
-const CIRCLE_RADIUS = 60.0;
+const CIRCLE_RADIUS = 30.0;
 
 const styles = {
   container: {
@@ -376,19 +379,19 @@ const styles = {
   },
   artStyle: {
     position: 'absolute',
-    marginTop: height/2.0 - IMAGE_HEIGHT + CIRCLE_RADIUS,
-    marginLeft: width/2.0 - IMAGE_WIDTH
+    marginTop: height/2.0 - IMAGE_HEIGHT,
+    marginLeft: width/2.0 - IMAGE_WIDTH,
   },
   fitnessStyle: {
     position: 'absolute',
     marginTop: height/2.0 - IMAGE_HEIGHT + CIRCLE_RADIUS,
-    marginLeft: width/2.0 - IMAGE_WIDTH
+    marginLeft: width/2.0 - IMAGE_WIDTH,
   },
   foodStyle: {
     position: 'absolute',
-    marginTop: height/2.0 - IMAGE_HEIGHT + CIRCLE_RADIUS,
+    transform: [{rotate: '72 deg'}, {translateX: CIRCLE_RADIUS}, {translateY: CIRCLE_RADIUS}],
+    marginTop: height/2.0 - IMAGE_HEIGHT,
     marginLeft: width/2.0 - IMAGE_WIDTH,
-
   },
   hotelStyle: {
     position: 'absolute',
