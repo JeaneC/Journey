@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Animated, Modal, Dimensions, Image } from 'react-native';
+import { View, Text, Animated, Modal, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { MapView, Location, Constants, Permissions } from 'expo';
 import { Icon, Button } from 'react-native-elements';
 import {
@@ -311,8 +311,21 @@ class MapScreen extends Component {
           pitchEnabled={false}
           onRegionChangeComplete={this.onRegionChangeComplete}
         >
-          <Image source={art} style={styles.artStyle} />
-          <Image source={food} style={styles.foodStyle} />
+          <TouchableOpacity >
+            <Image source={art} style={styles.artStyle}/>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={food} style={styles.foodStyle} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={shopping} style={styles.shoppingStyle} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={hotel} style={styles.hotelStyle} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={fitness} style={styles.fitnessStyle} />
+          </TouchableOpacity>
 
         {this.state.markers.map((marker, index) => {
           // console.log(index)
@@ -369,6 +382,9 @@ const IMAGE_WIDTH = 102.0/2.0;
 const IMAGE_HEIGHT = 77.0/2.0
 const CIRCLE_RADIUS = 30.0;
 
+const CENTERX = width/2.0 + 0;
+const CENTERY = height/2.0 + 6;
+
 const styles = {
   container: {
     flex: 1,
@@ -377,31 +393,30 @@ const styles = {
   mapStyle: {
     flex: 1
   },
-  artStyle: {
+  artStyle: {//ORANGE
     position: 'absolute',
-    marginTop: height/2.0 - IMAGE_HEIGHT,
-    marginLeft: width/2.0 - IMAGE_WIDTH,
+    marginTop: CENTERY + 28,
+    marginLeft: CENTERX - 54
   },
-  fitnessStyle: {
+  fitnessStyle: { //Yellow
     position: 'absolute',
-    marginTop: height/2.0 - IMAGE_HEIGHT + CIRCLE_RADIUS,
-    marginLeft: width/2.0 - IMAGE_WIDTH,
+    marginTop: CENTERY - 24,
+    marginLeft: CENTERX + 23
   },
-  foodStyle: {
+  foodStyle: { //Green
     position: 'absolute',
-    transform: [{rotate: '72 deg'}, {translateX: CIRCLE_RADIUS}, {translateY: CIRCLE_RADIUS}],
-    marginTop: height/2.0 - IMAGE_HEIGHT,
-    marginLeft: width/2.0 - IMAGE_WIDTH,
+    marginTop: CENTERY - 99,
+    marginLeft: CENTERX + 7
   },
-  hotelStyle: {
+  hotelStyle: {  //Red
     position: 'absolute',
-    marginTop: height/2.0 - IMAGE_HEIGHT + CIRCLE_RADIUS,
-    marginLeft: width/2.0 - IMAGE_WIDTH
+    marginTop: CENTERY - 24,
+    marginLeft: CENTERX - 100
   },
-  shoppingStyle: {
+  shoppingStyle: { //Blue
     position: 'absolute',
-    marginTop: height/2.0 - IMAGE_HEIGHT + CIRCLE_RADIUS,
-    marginLeft: width/2.0 - IMAGE_WIDTH
+    marginTop: CENTERY - 99,
+    marginLeft: CENTERX - 93
   },
   buttonContainer1: {
     position: 'absolute',
@@ -435,9 +450,9 @@ const styles = {
     fontSize: 15
   },
   marker: {
-    width: 18,
-    height: 18,
-    borderRadius: 22,
+    width: 24,
+    height: 24,
+    borderRadius: 28,
     backgroundColor: "rgba(255,0,0, 0.9)",
   },
   markerWrap: {
