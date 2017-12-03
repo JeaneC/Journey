@@ -12,6 +12,10 @@ import calendar from '../assets/tabbar/calendar.png';
 
 import { updateEvents } from '../firebase/firebase';
 
+import user0 from '../assets/events/profiles/0.png';
+import user1 from '../assets/events/profiles/1.png';
+import user3 from '../assets/events/profiles/3.png';
+
 const uuidv4 = require('uuid/v4');
 
 class CreateEventScreen extends Component {
@@ -21,16 +25,16 @@ class CreateEventScreen extends Component {
     this.state = {
       events: this.props.events ? this.props.events : {},
       title: "John's Hangout",
-      startdate: "Dec 3, 2017",
+      startdate: "December 3, 2017",
       numberOfTurns: "7",
-      description: ''
+      description: 'Hangout with Friends'
     }
 
     console.log('Check events', this.props.events)
   }
 
   finishEvent = () => {
-    console.log(uuidv4)
+    const random = uuidv4()
     const newEvent = {
       currentPlayer: 0,
       currentTurn: 0,
@@ -40,8 +44,9 @@ class CreateEventScreen extends Component {
       title: this.state.title
     }
     let newEvents = {...this.state.events}
-    newEvents[uuidv4] = newEvent;
+    newEvents[random] = newEvent;
     updateEvents(newEvents)
+    this.props.navigation.goBack()
     //Add to firebase
     //Set new event id in redux
     //Go to mapview
@@ -58,7 +63,7 @@ class CreateEventScreen extends Component {
             <Image source={checkIcon} style={{ marginLeft: 10, width: 18, height: 18}}/>
           </TouchableOpacity>
         </View>
-        <View style={{ flex: 1}} >
+        <View style={{ flex: 1, marginBottom: 20}} >
           <ScrollView>
             <Text style={styles.headerStyle}>Basic Info</Text>
             <TextInput
@@ -85,6 +90,18 @@ class CreateEventScreen extends Component {
               value={this.state.numberOfTurns}
             />
             <Text style={styles.headerStyle}>Invite Friends</Text>
+            <View style={styles.friendStyle}>
+              <Image source={user0} style={styles.profileStyle} />
+              <Text>Harry Liu</Text>
+            </View>
+            <View style={styles.friendStyle}>
+              <Image source={user1} style={styles.profileStyle} />
+              <Text>Dorian Brown</Text>
+            </View>
+            <View style={styles.friendStyle}>
+              <Image source={user3} style={styles.profileStyle} />
+              <Text>Christian Lee</Text>
+            </View>
           </ScrollView>
         </View>
         <View style={styles.botBar}>
@@ -154,6 +171,30 @@ const styles = {
     paddingLeft: 15,
     marginTop: 20,
 
+ },
+ friendStyle: {
+   height: 40,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    borderWidth: 1,
+    borderRadius: 2,
+    borderColor: '#ddd',
+    borderBottomWidth: 0,
+    shadowColor: '#bdc3c7',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    elevation: 1,
+    marginLeft: 25,
+    marginRight: 25,
+    paddingLeft: 15,
+    marginTop: 20,
+    display: 'flex',
+    flexDirection: 'row'
+ },
+ profileStyle: {
+   marginRight: 20,
  },
  headerStyle: {
    marginTop: 15,
