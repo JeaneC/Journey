@@ -22,7 +22,8 @@
   <link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/sign-in.css">
-  <link rel="stylesheet" href="../css/profile.css">
+  <link rel="stylesheet" href="../css/detail.css">
+  <link rel="stylesheet" href="../css/events.css">
 
 
 
@@ -46,34 +47,59 @@
 
   <!-- Navbar -->
   <nav class="top-navbar">
-    <div class="" id="navbar-title">Profile</div>
+    <div class="" id="navbar-title">Detail</div>
   </nav>
 
-<div class="setting-icon">
-  <!--  Settings -->
-  <img id="card-pressed" alt="settings" src="../imgs/profile/settings.svg" alt="">
+
+
+<div class="">
 </div>
 
+
   <!-- Content Part 1 -->
-  <div class="row intro" id="div-outer-centered">
-  <div class=user-name id="div-inner-centered">
-    <img src="../imgs/profile/user-info.svg" alt="">
+  <div class="row intro img-bg img-wrapper" id="div-outer-centered" style="margin-bottom: 0.3cm;">
+    <div class="user-name img-bg" id="div-inner-centered">
+      <!-- Envent img -->
+      <div class="" style="padding-top:44px;">
+        <img src="../imgs/detail/event.png" alt="">
+      </div>
+      </div>
+      </div>
+
+
+      <div class="row intro" id="div-outer-centered">
+        <div class="user-name" id="div-inner-centered">
+          <span class="y-hack"> Y-Hack</span>
+          <br>
+          <span class="date">Dec 1, 2017</span>
+          <br>
+          <span class="attending">938 Attending</span>
+        </div>
+      </div>
+
+
+
+      <div class="row intro" id="div-outer-centered" style="margin-top: 0.3cm">
+      <div class="user-name" id="div-inner-centered">
+          <img src="../imgs/detail/body.png" alt="">
+      </div>
+      </div>
+
+    <!-- sign btn  -->
+    <div class="row intro" id="div-outer-centered">
+      <div class="user-name" id="div-inner-centered">
+    <div id="btn-pressed" style="padding-top: 0.4cm">
+    <a href="./profile.html">
+    <img alt="going button" class="img-fluid btn-fb" height="auto" src="../imgs/detail/going-btn.svg">
+    </a>
     </div>
+    </div>
+    </div>
+
     <!--  line break -->
     <div style="padding-top: 0.4cm; padding-bottom:.5cm"><hr></div>
   </div>
 
-  <!-- Content Part 2 -->
-  <div style="padding-left: 12px; padding-bottom:.2cm;">
-  <div class="favorites" style="padding-left: 22px; padding-bottom:10px;">Favorites</div>
-  <!-- cards -->
-  <img id="card-pressed" alt="location" src="../imgs/profile/sf-shadow.svg">
-  <img id="card-pressed" alt="location" src="../imgs/profile/sydney.svg">
-  <!--
-  <img id="card-pressed" alt="location" src="../imgs/profile/NYC.svg">
-    -->
-
-  </div>
 
   <!-- Tabbar -->
   <ul class="tab-bar">
