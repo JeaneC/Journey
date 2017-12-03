@@ -10,14 +10,16 @@ import {
   updateCurrentTurn,
   setPolylines
 } from '../firebase/firebase';
+
 import qs from 'qs';
 import axios from 'axios';
 import polyline from 'google-polyline'
+import { connect } from 'react-redux';
+
+import startingMarker from '../assets/images/start.png'
 
 
 const EVENT_ID = "event0001";
-const USER_ID = "1637485562938133"
-const MAX_TURNS = 7 //Subtract one since we start from 0
 
 let id = 1;
 
@@ -31,7 +33,7 @@ const colorDict = {
 const playerDict = {
   "1637485562938133" : "0",
   "1588411377848181" : "1",
-  "1588411377848181" : "2",
+  "2120072848006532" : "2",
   "1588411377848182" : "3"
 }
 
@@ -49,6 +51,19 @@ class MapScreen extends Component {
 
   constructor(props) {
     super(props);
+
+    // const userId = "1637485562938133"
+    const userId = this.props.uid
+
+    // const eventId = "event0001"
+    const eventId = this.props.eventId
+
+    // console.log('MapScreen')
+    // console.log(userId)
+    // console.log(eventId)
+    // const maxTurns = 7 //Subtract one since we start from 0
+    const maxTurns = this.props.numberOfTurns
+    // console.log('Max turns are ', maxTurns)
 
     this.state = {
       mapLoaded: false,
@@ -72,7 +87,10 @@ class MapScreen extends Component {
       ],
       event: null,
       turnCount: null,
-      currentPlayer: null
+      currentPlayer: null,
+      userId,
+      eventId,
+      maxTurns
 
     };
 
@@ -197,8 +215,9 @@ class MapScreen extends Component {
     //App is done if currentMove = numberOfTurns
     database.ref(`events/${EVENT_ID}/currentTurn`).on("value", (snapshot) => { //Since we start counting turns at 0
       const turnCount = snapshot.val()
-      if ( turnCount >= MAX_TURNS ) {
+      if ( turnCount >= this.state.maxTurns ) {
         console.log('App Ended')
+        // this.p
       } else {
         this.setState({ turnCount })
       }
@@ -221,7 +240,7 @@ class MapScreen extends Component {
   //When user presses anywhere on the map
   makeMove = (coordinate) => {
     //If user is the targeted current player
-    if (this.state.currentPlayer == playerDict[USER_ID]) {
+    if (this.state.currentPlayer == playerDict[this.state.userId]) {
       const lastId = this.state.markers.length;
 
       const newMarker = {
@@ -241,7 +260,7 @@ class MapScreen extends Component {
       ]
       this.setState({ markers: newMarkers });
 
-      newId = parseInt(playerDict[USER_ID]) + 1 ;
+      newId = parseInt(playerDict[this.state.userId]) + 1 ;
       if ( newId > 3 ) {
         newId = 0
       }
@@ -253,7 +272,7 @@ class MapScreen extends Component {
 
       //Increment player value on firebase
     } else {
-      // console.log(playerDict[USER_ID])
+      // console.log(playerDict[this.state.userId])
       // console.log(this.state.currentPlayer)
       // console.log("It's not this player's move")
     }
@@ -275,6 +294,14 @@ class MapScreen extends Component {
           onRegionChangeComplete={this.onRegionChangeComplete}
         >
         {this.state.markers.map((marker, index) => {
+          // console.log(index)
+          // if (index == 0) {
+          //   return <MapView.Marker
+          //     coordinate={marker.coordinate}
+          //     key={index}
+          //     image={startingMarker}
+          //   />
+          // }
           return (
             <MapView.Marker
               coordinate={marker.coordinate}
@@ -297,7 +324,7 @@ class MapScreen extends Component {
               coordinates={polyline.coordinates}
               strokeColor={strokeColor}
               fillColor="rgba(255,0,0)"
-              strokeWidth={7}
+              strokeWidth={8}
             />
           )
         })}
@@ -368,6 +395,15 @@ const styles = {
   },
 }
 
+const mapStateToProps = state => {
+  console.log('Map Screen Props')
+  console.log(state)
+  return {
+    uid: state.main.uid,
+    eventId: state.main.eventId,
+    numberOfTurns: state.main.eventTurns
+  }
+}
 
 
-export default MapScreen;
+export default connect(mapStateToProps)(MapScreen);
