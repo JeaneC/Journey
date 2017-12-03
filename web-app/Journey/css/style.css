@@ -6,8 +6,9 @@ body {
 }
 
 h1 h2 h3 h4 h5 h6 {
-  font-family: SFProText-Regular;
+  font-family:  "SF Pro Text", sans-serif;
 }
+
 .top-navbar {
 	height: 54px;
 	width: 100%;
@@ -23,7 +24,7 @@ h1 h2 h3 h4 h5 h6 {
 	font-size: 24px;
 	padding-top: 11px;
 	padding-bottom: 11px;
-	font-family: SFProText-Regular;
+	font-family:  "SF Pro Text", sans-serif;
 	letter-spacing: 1px;
 }
 .tab-bar, .nav-bar {

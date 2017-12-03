@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="24px" height="30px" viewBox="0 0 24 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
-    <title>icon/filled/user</title>
+    <title>user@2x</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="wire-frame" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-        <g id="icons" transform="translate(1.000000, 0.000000)" stroke="#4B7ACC">
+        <g id="icons" transform="translate(1.000000, 0.000000)" stroke-width="1.9" stroke="#A4A4A4">
             <g id="icon/filled/user" transform="translate(0.000000, 1.347826)">
                 <g id="user">
-                    <path d="M16.5,5.78194263 C16.5,8.97550228 14.0378333,11.5638853 11,11.5638853 C7.96216667,11.5638853 5.5,8.97550228 5.5,5.78194263 C5.5,2.58838299 7.96216667,0 11,0 C14.0378333,0 16.5,2.58838299 16.5,5.78194263 Z" id="Stroke-103" stroke-width="1.9"></path>
-                    <path d="M22,26.982399 L0,26.982399 C0,21.6610844 4.103,17.3458279 9.16666667,17.3458279 L12.8333333,17.3458279 C17.897,17.3458279 22,21.6610844 22,26.982399 Z" id="Stroke-104" stroke-width="1.9"></path>
+                    <path d="M16.32,5.77263194 C16.32,8.96104898 13.8846933,11.5452639 10.88,11.5452639 C7.87530667,11.5452639 5.44,8.96104898 5.44,5.77263194 C5.44,2.5842149 7.87530667,0 10.88,0 C13.8846933,0 16.32,2.5842149 16.32,5.77263194 Z" id="Stroke-103"></path>
+                    <path d="M21.76,26.938949 L0,26.938949 C0,21.6262034 4.05824,17.3178958 9.06666667,17.3178958 L12.6933333,17.3178958 C17.70176,17.3178958 21.76,21.6262034 21.76,26.938949 Z" id="Stroke-104"></path>
                 </g>
             </g>
         </g>
