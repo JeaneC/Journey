@@ -30,6 +30,13 @@ export const getEvents = async (eventId) => {
     })
 }
 
+export const getJourneys = async (eventId) => {
+  return await database.ref(`events/journeys`).once('value')
+    .then(snapshot => {
+      return snapshot.val()
+    })
+}
+
 
 export const updateEvents = async (events) => {
   database.ref(`events/`).set(events);
@@ -51,6 +58,9 @@ export const setPolylines = (eventId, polylines) => {
   database.ref(`events/${eventId}/polylines`).set(polylines);
 }
 
+export const setJourneys = (eventId, journeys) => {
+  database.ref(`events/${eventId}/journeys`).set(journeys);
+}
 
 
 

@@ -206,6 +206,8 @@ class MapScreen extends Component {
     console.log(query)
     const response = await axios.get(query)
     const { data } = response.data
+    this.setState({ visible: false})
+
     return data
   }
 

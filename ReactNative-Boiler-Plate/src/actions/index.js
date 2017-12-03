@@ -20,3 +20,5 @@ export const updateEventTurns = (turns) => ({ type: "UPDATE_EVENT_TURNS", payloa
 export const updateCategory = (category) => ({ type: "UPDATE_CATEGORY", payload: category})
 
 export const updateResults = (results) => ({ type: "UPDATE_RESULTS", payload: results})
+
+export const updateRegion = (region) => ({ type: "UPDATE_REGION", payload: region})

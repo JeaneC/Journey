@@ -10,7 +10,7 @@ import user from '../assets/tabbar/user.png';
 import map from '../assets/tabbar/map.png';
 import calendar from '../assets/tabbar/calendar.png';
 
-import { updateEvents } from '../firebase/firebase';
+import { getJourneys, setJourneys } from '../firebase/firebase';
 
 import user0 from '../assets/events/profiles/0.png';
 import user1 from '../assets/events/profiles/1.png';
@@ -30,7 +30,20 @@ class CategorySelectionScreen extends Component {
 
   }
 
-  finishEvent = () => {
+  finishEvent = async (journey) => {
+    const journeys = await getJourneys();
+    console.log('what happened')
+    console.log(journeys)
+    const trueJourney = journeys ? journeys : []
+    const category = this.props.category;
+    const region = this.props.region;
+    const eventId = this.props.eventId;
+
+    const journeyObject = { category, region, eventId }
+    trueJourney.push(journeyObject)
+    console.log(trueJourney)
+
+    setJourneys(eventId, trueJourney)
 
     this.props.navigation.goBack()
 
@@ -38,7 +51,7 @@ class CategorySelectionScreen extends Component {
   }
 
   componentDidMount() {
-
+    const journeys = getJourneys()
   }
 
   render() {
@@ -155,7 +168,9 @@ const mapStateToProps = state => {
 
   return {
     journeys: state.main.results,
-    category: state.main.category
+    category: state.main.category,
+    region: state.main.region,
+    eventId: state.main.eventId
   }
 }
 

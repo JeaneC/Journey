@@ -9,7 +9,8 @@ const MainReducerDefaultState = {
   eventId: null,
   eventTurns: null,
   category: null,
-  results: null
+  results: null,
+  region: null
 }
 
 export default (state = MainReducerDefaultState, action) => {
@@ -64,6 +65,11 @@ export default (state = MainReducerDefaultState, action) => {
       return {
         ...state,
         results: action.payload
+      }
+    case 'UPDATE_REGION':
+      return {
+        ...state,
+        region: action.payload
       }
     default:
       return state;
