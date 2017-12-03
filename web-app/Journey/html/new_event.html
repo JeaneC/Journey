@@ -5,13 +5,61 @@
     <title>Journey</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-    <link rel="stylesheet" href="../css/events.css">
+    <link rel="stylesheet" href="../css/new_event.css">
+    <link rel="stylesheet" href="../css/style.css">
+
     <meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 <body>
-<div id="app-screen" class="screen tab-shown nav-shown">
-    <div class="nav-bar"></div>
 
+<div id="app-screen" class="screen  nav-shown">
+
+    <nav class="nav-bar">
+        New Event
+        <div class="right-button">
+            <i class="material-icons">check</i>
+        </div>
+        <div class="left-button">
+            <i class="material-icons">arrow_back</i>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="group-label">Basic Info</div>
+        <div class="card-layout info-row">
+            <input type="text" placeholder="Name" class="input" size="30">
+        </div>
+        <div class="group-label">Start Date</div>
+        <div class="card-layout info-row">
+            <input type="date" class="input">
+        </div>
+        <div class="group-label">Number of Turns</div>
+        <div class="card-layout info-row">
+            <input type="text" placeholder="3" class="input" size="30">
+        </div>
+
+        <div id="calendar-invite">
+            <div class="group-label">Invite Friends</div>
+            <div class="selected">1 / 7 Selected</div>
+        </div>
+
+        <ul class="friends">
+            <li class="card-layout friend-row">
+                <img src="../imgs/events/profiles/0.png">
+                <div class="user-name">Nick Grifka</div>
+            </li>
+            <li class="card-layout friend-row">
+                <img src="../imgs/events/profiles/1.png">
+                <div class="user-name">Jeffrey Estrada Ramos</div>
+            </li>
+            <li class="card-layout friend-row selected">
+                <img src="../imgs/events/profiles/2.png">
+                <div class="user-name">Josh Hebert</div>
+            </li>
+        </ul>
+
+    </div>
 </div>
+
 </body>
 </html>

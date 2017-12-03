@@ -2,11 +2,11 @@ body {
     font-family : "SF Pro Text", sans-serif;
 }
 
-h3 {
-    font-size: 14px;
-    margin: 30px 20px;
-    padding: 0;
-    color: #737373;
+.group-label {
+    font-size : 14px;
+    margin    : 20px 0 20px 30px;
+    padding   : 0;
+    color     : #737373;
 }
 
 .screen {
@@ -27,19 +27,28 @@ h3 {
 }
 
 .nav-bar {
-    text-align: center;
+    padding-top      : 16px;
+    font-size        : 18px;
+    text-align       : center;
     margin           : 0;
     z-index          : 1;
     background-color : #405C96;
     transition       : all 600ms cubic-bezier(1, 0, 0, 1);
-    color: white;
+    color            : white;
 }
 
-.new-button {
-    position: absolute;
+.right-button, .left-button {
+    position : absolute;
+    top      : 16px;
+    color    : white;
+}
+
+.right-button {
     right: 20px;
-    top: 16px;
-    color: white;
+}
+
+.left-button {
+    left    : 20px;
 }
 
 .main-content {
@@ -56,15 +65,15 @@ h3 {
     margin           : 0;
     padding          : 7px 0 0 0;
     z-index          : 3;
-    left: 0;
-    right: 0;
+    left             : 0;
+    right            : 0;
     border-top       : 1px solid #CACACA;
     background-color : white;
     transition       : all 600ms cubic-bezier(1, 0, 0, 1);
 }
 
 .tab-bar > li {
-    margin-top: 8px;
+    margin-top : 8px;
     text-align : center;
 }
 
@@ -113,39 +122,58 @@ h3 {
     box-shadow : 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.friend-row {
+.info-row {
     background-color : white;
+    margin           : 0 15px;
     padding          : 18px 20px;
     border-radius    : 2px;
 }
 
-.event-row {
-    display : flex;
-}
-
-.event-row > input {
+.info-row input {
+    border    : 0;
+    outline   : 0;
     font-size : 16px;
     color     : #757575;
-    flex      : 1;
-    outline: none;
-    border: none;
 }
 
-.name{
-    margin: 0;
+.friend-row {
+    color: #757575;
+    display: flex;
+    background-color: white;
+    border-radius: 2px;
+    padding: 10px 20px;
 }
 
-#selector{
-    color: darkgray;
+.friend-row.selected {
+    background-color: #3F5B95;
+    color: white;
+}
+
+.friend-row:not(:first-child) {
+    margin-top: 20px;
 }
 
 #calendar-invite {
-    display: flex;
+    display : flex;
 }
 
-#calendar-invite > div {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-size: 14px;
-    flex: 1;
+#calendar-invite > .selected {
+    margin-left: 15px;
+    margin-top    : 20px;
+    margin-bottom : 20px;
+    flex          : 1;
+    font-size     : 14px;
+    color         : #A6A6A6;
+}
+
+.user-name {
+    margin-left: 15px;
+    font-size: 16px;
+    margin-top: 7px;
+}
+
+.friends {
+    list-style: none;
+    padding :0;
+    margin: 0 15px;
 }
