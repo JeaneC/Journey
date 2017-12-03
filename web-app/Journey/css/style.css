@@ -11,9 +11,13 @@
 #navbar-title {
   color: white;
   font-size: 24px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  font-family: SFProText-Regular;
+  letter-spacing: 1px;
+
+
 }
-
-
 
 .bottom-navbar{
       height: 54px;
