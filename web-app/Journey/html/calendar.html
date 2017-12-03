@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Journey</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" href="../css/calendar.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+</head>
+<body>
+<div id="app-screen" class="screen tab-shown nav-shown">
+    <div class="nav-bar">
+        New Event
+        <div class="new-button">
+            <i class="material-icons">add</i>
+        </div>
+    </div>
+    <div class="main-content">
+        <ul id="main-content-events">
+            <h3>Basic Info</h3>
+            <li class="card-layout event-row">
+                <div class="event-name">
+                    <input type="text" placeholder="Name" class="input" size="30">
+                </div>
+            </li>
+            <h3>Start Date</h3>
+            <li class="card-layout event-row">
+                <div class="event-name">
+                    <input type="date" class="input">
+                </div>
+            </li>
+            <h3>Number of Turns</h3>
+            <li class="card-layout event-row">
+                <div class="event-name">
+                    <input type="text" placeholder="3" class="input" size="30">
+                </div>
+            </li>
+            <table>
+                <tr><td><h3>Invite Friends</h3></td>
+                <td><p>0 / 7  Selected</p></td>
+                </tr>
+            </table>
+            <li class="card-layout event-row">
+            <table>
+                <tr>
+                    <td><img src="../imgs/events/profiles/0.png"></td>
+                <td><p class="name">Nick Grifka</p></td>
+                </tr>
+            </table>
+            </li>
+            <li class="card-layout event-row">
+                <table>
+                    <tr>
+                        <td><img src="../imgs/events/profiles/1.png"></td>
+                        <td><p class="name">Jeffrey Estrada Ramos</p></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="card-layout event-row">
+                <table>
+                    <tr>
+                        <td><img src="../imgs/events/profiles/2.png"></td>
+                        <td><p class="name">Jeffrey Estrada Ramos</p></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+    </div>
+    <ul class="tab-bar">
+        <li class="selected">
+            <div>
+                <i class="material-icons">event_note</i>
+            </div>
+            <div>
+                Events
+            </div>
+        </li>
+        <li>
+            <div>
+                <i class="material-icons">memory</i>
+            </div>
+            <div>
+                About
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
