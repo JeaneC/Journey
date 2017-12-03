@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Journy</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+</head>
+<body>
+<div id="app-screen" class="screen">
+    <div id="tab-screen" class="screen tab-shown">
+        <div class="main-content">
+            <div id="events-screen" class="screen nav-shown">
+                <div class="nav-bar">
+                    Events
+                    <div class="right-button" id="new-event-button">
+                        <i class="material-icons">add</i>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <div id="main-content-current-event">
+                        <div id="main-content-event-title">
+                            YHack
+                        </div>
+                        <div id="main-content-event-date">
+                            Dec 1, 2017
+                        </div>
+                        <div id="main-content-event-participants-count">
+                            5 participants
+                        </div>
+                        <ul id="main-content-event-participants-profiles">
+                            <li>
+                                <img src="../imgs/events/profiles/0.png">
+                            </li>
+                            <li>
+                                <img src="../imgs/events/profiles/1.png">
+                            </li>
+                            <li>
+                                <img src="../imgs/events/profiles/2.png">
+                            </li>
+                            <li>
+                                <img src="../imgs/events/profiles/3.png">
+                            </li>
+                            <li>
+                                <img src="../imgs/events/profiles/4.png">
+                            </li>
+                        </ul>
+                    </div>
+                    <ul id="main-content-events">
+                        <li class="card-layout event-row">
+                            <div class="event-name">
+                                Workshop
+                            </div>
+                            <div class="event-date">
+                                Dec 2, 2017
+                            </div>
+                        </li>
+                        <li class="card-layout event-row">
+                            <div class="event-name">
+                                Judging
+                            </div>
+                            <div class="event-date">
+                                Dec 3, 2017
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="about-screen" class="screen">
+                <div id="about-logo">
+                    <img src="../imgs/events/logo.svg">
+                </div>
+                <div id="about-app-intro">
+                    Journy is an event planing app deeply integrated with <span>Facebook API</span> and <span>Firebase ( Google Cloud Platform )</span>.
+                </div>
+
+                <div id="about-created-by">The creators</div>
+                <ul id="about-creators">
+                    <li>
+                        <img src="../imgs/creators/jeane-carlos-profile.png">
+                        <div>Jeane Carlos</div>
+                    </li>
+                    <li>
+                        <img src="../imgs/creators/dorian-brown-profile.png">
+                        <div>Dorian Brown</div>
+                    </li>
+                    <li>
+                        <img src="../imgs/creators/christian-lee-profile.png">
+                        <div>Christian Lee</div>
+                    </li>
+                    <li>
+                        <img src="../imgs/creators/yang-liu-profile.png">
+                        <div>Yang Liu</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul class="tab-bar">
+            <li class="selected" id="events-screen-tab">
+                <div>
+                    <i class="material-icons">event_note</i>
+                </div>
+                <div>
+                    Events
+                </div>
+            </li>
+            <li id="about-screen-tab">
+                <div>
+                    <i class="material-icons">memory</i>
+                </div>
+                <div>
+                    About
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="new-event-screen" class="screen">
+        <nav class="nav-bar">
+            New Event
+            <div class="right-button">
+                <i class="material-icons">check</i>
+            </div>
+            <div class="left-button">
+                <i class="material-icons">arrow_back</i>
+            </div>
+        </nav>
+
+        <div class="main-content">
+            <div class="group-label">Basic Info</div>
+            <div class="card-layout info-row">
+                <input type="text" placeholder="Name" class="input" size="30">
+            </div>
+            <div class="group-label">Start Date</div>
+            <div class="card-layout info-row">
+                <input type="date" class="input">
+            </div>
+            <div class="group-label">Number of Turns</div>
+            <div class="card-layout info-row">
+                <input type="text" placeholder="3" class="input" size="30">
+            </div>
+
+            <div id="calendar-invite">
+                <div class="group-label">Invite Friends</div>
+                <div class="selected">1 / 7 Selected</div>
+            </div>
+
+            <ul class="friends">
+                <li class="card-layout friend-row">
+                    <img src="../imgs/events/profiles/0.png">
+                    <div class="user-name">Nick Grifka</div>
+                </li>
+                <li class="card-layout friend-row">
+                    <img src="../imgs/events/profiles/1.png">
+                    <div class="user-name">Jeffrey Estrada Ramos</div>
+                </li>
+                <li class="card-layout friend-row selected">
+                    <img src="../imgs/events/profiles/2.png">
+                    <div class="user-name">Josh Hebert</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

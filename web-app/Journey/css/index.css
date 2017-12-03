@@ -1,0 +1,343 @@
+body {
+    font-family : "SF Pro Text", sans-serif;
+}
+
+.nav-bar .right-button, .nav-bar .left-button {
+    transition : all 200ms cubic-bezier(1, 0, 0, 1);;
+}
+
+.nav-bar .right-button:hover, .nav-bar .left-button:hover {
+    opacity : 0.7;
+    cursor  : pointer;
+}
+
+.screen {
+    position : fixed;
+    left     : 0;
+    right    : 0;
+    /*top      : 0;*/
+    bottom   : 0;
+    overflow-y: auto;
+    transition : all 200ms cubic-bezier(1, 0, 0, 1);
+}
+
+.tab-bar, .nav-bar {
+    height : 55px;
+}
+
+.tab-bar, .nav-bar, .main-content {
+    position : fixed;
+    width    : 100%;
+}
+
+.nav-bar {
+    text-align       : center;
+    padding          : 18px 0;
+    margin           : 0;
+    z-index          : 1;
+    background-color : #405C96;
+    transition       : all 600ms cubic-bezier(1, 0, 0, 1);
+    color            : white;
+}
+
+.right-button {
+    position : absolute;
+    right    : 20px;
+    top      : 16px;
+    color    : white;
+}
+
+.main-content {
+    z-index          : 2;
+    background-color : #F3F3F3;
+    box-shadow       : 0 0 4px rgba(0, 0, 0, 0.2);
+    transition       : all 600ms cubic-bezier(1, 0, 0, 1);
+}
+
+.tab-bar {
+    display          : flex;
+    justify-content  : space-around;
+    list-style       : none;
+    margin           : 0;
+    padding          : 7px 0 0 0;
+    z-index          : 3;
+    border-top       : 1px solid #CACACA;
+    background-color : white;
+    transition       : all 600ms cubic-bezier(1, 0, 0, 1);
+}
+
+.tab-bar > li {
+    text-align : center;
+}
+
+.tab-bar > li:not(.selected) {
+    color : #757575;
+}
+
+.tab-bar > li.selected {
+    color : #405C96;
+}
+
+.main-content {
+    position: fixed;
+}
+
+#tab-screen {
+    position: relative;
+}
+
+#tab-screen.tab-shown .tab-bar {
+    bottom : 0;
+}
+
+#tab-screen:not(.tab-shown) .tab-bar {
+    bottom : -55px;
+}
+
+#tab-screen:not(.tab-shown) .main-content {
+    bottom : 0;
+}
+
+#events-screen:not(.nav-shown) .main-content {
+    top : 0;
+}
+
+#tab-screen.tab-shown .main-content {
+    bottom : 55px;
+}
+
+#events-screen {
+    padding-bottom: 55px;
+}
+
+#events-screen.nav-shown .main-content {
+    top : 55px;
+}
+
+#events-screen.nav-shown .nav-bar {
+    top : 0;
+}
+
+#events-screen:not(.nav-shown) .nav-bar {
+    top : -55px;
+}
+
+#main-content-current-event {
+    text-align     : center;
+    margin         : 30px 15px;
+    letter-spacing : 1pt;
+}
+
+#main-content-event-title {
+    font-size   : 40px;
+    font-weight : 500;
+}
+
+#main-content-event-date {
+    color      : #7D7D7D;
+    font-size  : 20px;
+    margin-top : 10px;
+}
+
+#main-content-event-participants-count {
+    font-size  : 18px;
+    margin-top : 15px;
+    color      : #7D7D7D;
+}
+
+#main-content-event-participants-profiles {
+    list-style      : none;
+    padding         : 0;
+    margin          : 20px 0 0 0;
+    display         : flex;
+    justify-content : center;
+}
+
+#main-content-event-participants-profiles > li:not(:first-child) {
+    margin-left : 10px;
+}
+
+.card-layout {
+    padding    : 10px;
+    box-shadow : 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#main-content-events {
+    margin     : 0 15px;
+    padding    : 0;
+    list-style : none;
+}
+
+#main-content-events > li {
+    background-color : white;
+    padding          : 18px 30px;
+    border-radius    : 2px;
+}
+
+#main-content-events > li:not(:first-child) {
+    margin-top : 15px;
+}
+
+.event-row {
+    display : flex;
+}
+
+.event-row > .event-name {
+    font-size : 16px;
+    color     : #757575;
+    flex      : 1;
+}
+
+.event-row > .event-date {
+    font-size  : 12px;
+    margin-top : 3px;
+    color      : #888888;
+}
+
+#about-screen {
+    position: relative;
+    left: 100%;
+    width: 100%;
+    top: 0;
+    padding-bottom: 55px;
+    background-color : #405C96;
+}
+
+#about-logo {
+    margin-top : 100px;
+    text-align : center;
+}
+
+#about-app-intro {
+    font-size      : 16px;
+    line-height    : 28px;
+    margin         : 40px 40px auto 40px;
+    color          : white;
+    letter-spacing : 1pt;
+}
+
+#about-app-intro > span {
+    font-weight : bold;
+}
+
+#about-created-by {
+    font-size   : 26px;
+    font-weight : bold;
+    margin      : 50px 0;
+    text-align  : center;
+    color       : white;
+}
+
+#about-creators {
+    list-style : none;
+    padding: 0;
+    margin: 50px 40px 0 40px;
+}
+
+#about-creators > li {
+    display : flex;
+}
+
+#about-creators > li > img {
+    width  : 50px;
+    height : 50px;
+}
+
+#about-creators > li > div {
+    margin-left : 30px;
+    font-size: 22px;
+    font-weight: bolder;
+    color: white;
+    padding-top: 12px;
+}
+
+#about-creators > li:not(:first-child) {
+    margin-top : 30px;
+}
+
+#new-event-screen {
+    position: fixed;
+    z-index: 10;
+}
+
+.group-label {
+    font-size : 14px;
+    margin    : 20px 0 20px 30px;
+    padding   : 0;
+    color     : #737373;
+}
+
+.right-button, .left-button {
+    position : absolute;
+    top      : 16px;
+    color    : white;
+}
+
+.right-button {
+    right: 20px;
+}
+
+.left-button {
+    left    : 20px;
+}
+
+.card-layout {
+    padding    : 10px;
+    box-shadow : 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.info-row {
+    background-color : white;
+    margin           : 0 15px;
+    padding          : 18px 20px;
+    border-radius    : 2px;
+}
+
+.info-row input {
+    border    : 0;
+    outline   : 0;
+    font-size : 16px;
+    color     : #757575;
+}
+
+.friend-row {
+    color: #757575;
+    display: flex;
+    background-color: white;
+    border-radius: 2px;
+    padding: 10px 20px;
+}
+
+.friend-row.selected {
+    background-color: #3F5B95;
+    color: white;
+}
+
+.friend-row:not(:first-child) {
+    margin-top: 20px;
+}
+
+#calendar-invite {
+    display : flex;
+}
+
+#calendar-invite > .selected {
+    margin-left: 15px;
+    margin-top    : 20px;
+    margin-bottom : 20px;
+    flex          : 1;
+    font-size     : 14px;
+    color         : #A6A6A6;
+}
+
+.user-name {
+    margin-left: 15px;
+    font-size: 16px;
+    margin-top: 7px;
+}
+
+.friends {
+    list-style: none;
+    padding :0;
+    margin: 0 15px;
+}
