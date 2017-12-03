@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { connect } from 'react-redux'
 import { Icon } from 'react-native-elements';
 
@@ -8,6 +8,7 @@ import user from '../assets/images/user.png';
 import map from '../assets/images/map.png';
 import calendar from '../assets/images/calendar.png';
 import yhack from '../assets/images/yhack.png';
+import participants0 from '../assets/images/participants0.png';
 import participants from '../assets/images/participants.png';
 
 class EventScreen extends Component {
@@ -31,14 +32,7 @@ class EventScreen extends Component {
   componentDidMount() {
     console.log('Event Screen Loaded')
   }
-  renderEvents = () => {
-    let keys = this.state.events
-    console.log(keys)
-    // console.log(this.state.events)
-    // this.state.events.keys().map(key => {
-    //   console.log(this.state.events[key])
-    // })
-  }
+
   createEvent = () => {
 
   }
@@ -54,15 +48,19 @@ class EventScreen extends Component {
           </TouchableOpacity>
         </View>
         <View style={{ flex: 5 }} >
-          <Text style={{ flex: 1, fontSize: 36, textAlign: 'center'}}>YHack</Text>
-          <Text style={{ flex: 1, fontSize: 24, color: "#d3d3d3", textAlign: 'center'}}>Dec 1, 2017</Text>
-          <Text style={{ flex: 1, fontSize: 24, color: "#d3d3d3", textAlign: 'center'}}>5 Participants</Text>
-          <Image source={participants} style={styles.imageStyle} />
-
+          <Image source={participants0} style={styles.imageStyle} />
         </View>
 
         <View style={styles.events}>
-          {this.renderEvents()}
+          <ScrollView>
+              {Object.keys(this.state.events).map(key => {
+                    return (
+                      <TouchableOpacity onPress={() => console.log(key)}>
+                        <EventBox event={this.state.events[key]} key={key} />
+                      </TouchableOpacity>
+                    )
+                  })}
+          </ScrollView>
         </View>
         <View style={styles.botBar}>
           <TouchableOpacity style={styles.iconBox}>
@@ -103,9 +101,9 @@ const styles = {
   },
   imageStyle: {
     flex: 1 ,
-    height: undefined,
-    width: undefined,
-    alignSelf: "cover"
+    height: 150,
+    marginRight:0,
+    marginLeft: 0
   },
   botBar: {
     flexDirection: "row",
