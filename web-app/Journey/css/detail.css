@@ -1,0 +1,47 @@
+.img-wrapper {
+	box-shadow: 0 1.5px 6px 0 rgba(34, 164, 255, 0.35);
+}
+
+.img-bg {
+		background-color: #22A4FF;
+	}
+
+body {
+	background-color: white !important;
+}
+
+.y-hack {
+	width: 172.5px;
+	height: 24px;
+	font-size: 40px;
+	font-weight: 500;
+	letter-spacing: 0.5px;
+	text-align: center;
+	color: #2f2f2f;
+}
+
+.y-hack .text-style-1 {
+	letter-spacing: normal;
+}
+
+.date {
+	width: 86.9px;
+	height: 12px;
+	font-size: 16px;
+	letter-spacing: 0.5px;
+	text-align: center;
+	color: #7d7d7d;
+}
+
+.dec-1-2017 .text-style-1 {
+	letter-spacing: normal;
+}
+
+.attending {
+	width: 68.5px;
+	height: 10.5px;
+	font-size: 22px;
+	letter-spacing: 0.4px;
+	text-align: center;
+	color: #7d7d7d;
+}
