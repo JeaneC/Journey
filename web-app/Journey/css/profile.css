@@ -1,0 +1,15 @@
+hr { color: red;}
+
+.user-name {
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	text-align: left;
+	color: #636363;
+}
+
+.user-profile {
+	width: 187.5px;
+	height: 406px;
+	object-fit: contain;
+}
