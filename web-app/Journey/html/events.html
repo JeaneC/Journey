@@ -2,62 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fourny</title>
-    <link rel="stylesheet" href="assets/styles/index.css">
+    <title>Journey</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" href="../css/events.css">
     <meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 <body>
-    <div id="app-screen" class="screen tab-shown nav-shown">
-        <div class="nav-bar"></div>
-        <div class="main-content">
-            <div id="main-content-current-event">
-                <div id="main-content-event-title">
-                    YHack
-                </div>
-                <div id="main-content-event-date">
-                    Dec 1, 2017
-                </div>
-                <div id="main-content-event-participants-count">
-                    5 participants
-                </div>
-                <ul id="main-content-event-participants-profiles">
-                    <li>
-                        <img src="assets/images/profiles/0.png">
-                    </li>
-                    <li>
-                        <img src="assets/images/profiles/1.png">
-                    </li>
-                    <li>
-                        <img src="assets/images/profiles/3.png">
-                    </li>
-                    <li>
-                        <img src="assets/images/profiles/4.png">
-                    </li>
-                    <li>
-                        <img src="assets/images/profiles/5.png">
-                    </li>
-                </ul>
+<div id="app-screen" class="screen tab-shown nav-shown">
+    <div class="nav-bar">
+        Events
+        <div>
+
+        </div>
+    </div>
+    <div class="main-content">
+        <div id="main-content-current-event">
+            <div id="main-content-event-title">
+                YHack
             </div>
-            <ul id="main-content-events">
-                <li class="card-layout event-row">
-                    <div class="event-name">
-                        Workshop
-                    </div>
-                    <div class="event-date">
-                        Dec 2, 2017
-                    </div>
+            <div id="main-content-event-date">
+                Dec 1, 2017
+            </div>
+            <div id="main-content-event-participants-count">
+                5 participants
+            </div>
+            <ul id="main-content-event-participants-profiles">
+                <li>
+                    <img src="../imgs/events/profiles/0.png">
                 </li>
-                <li class="card-layout event-row">
-                    <div class="event-name">
-                        Judging
-                    </div>
-                    <div class="event-date">
-                        Dec 3, 2017
-                    </div>
+                <li>
+                    <img src="../imgs/events/profiles/1.png">
+                </li>
+                <li>
+                    <img src="../imgs/events/profiles/3.png">
+                </li>
+                <li>
+                    <img src="../imgs/events/profiles/4.png">
+                </li>
+                <li>
+                    <img src="../imgs/events/profiles/5.png">
                 </li>
             </ul>
         </div>
-        <div class="tab-bar"></div>
+        <ul id="main-content-events">
+            <li class="card-layout event-row">
+                <div class="event-name">
+                    Workshop
+                </div>
+                <div class="event-date">
+                    Dec 2, 2017
+                </div>
+            </li>
+            <li class="card-layout event-row">
+                <div class="event-name">
+                    Judging
+                </div>
+                <div class="event-date">
+                    Dec 3, 2017
+                </div>
+            </li>
+        </ul>
     </div>
+    <ul class="tab-bar">
+        <li class="selected">
+            <div>
+                <i class="material-icons">event_note</i>
+            </div>
+            <div>
+                Events
+            </div>
+        </li>
+        <li>
+            <div>
+                <i class="material-icons">memory</i>
+            </div>
+            <div>
+                About
+            </div>
+        </li>
+    </ul>
+</div>
 </body>
 </html>
