@@ -15,8 +15,8 @@ import { updateEvents } from '../actions/index';
 
 class LoginScreen extends Component {
   componentDidMount() {
-    this.props.navigation.navigate('event')
-    // this.props.navigation.navigate('map')
+    // this.props.navigation.navigate('event')
+    this.props.navigation.navigate('map')
     // this.props.navigation.navigate('second')
   }
 

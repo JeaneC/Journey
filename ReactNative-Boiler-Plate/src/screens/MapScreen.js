@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Animated, Modal } from 'react-native';
+import { View, Text, Animated, Modal, Dimensions, Image } from 'react-native';
 import { MapView, Location, Constants, Permissions } from 'expo';
 import { Icon, Button } from 'react-native-elements';
 import {
@@ -18,10 +18,16 @@ import { connect } from 'react-redux';
 
 import startingMarker from '../assets/images/start.png'
 
-
+const { height, width } = Dimensions.get('window');
 const EVENT_ID = "event0001";
 
 let id = 1;
+
+import art from '../assets/menu/art.png';
+import fitness from '../assets/menu/fitness.png';
+import food from '../assets/menu/food.png';
+import hotel from '../assets/menu/hotel.png';
+import shopping from '../assets/menu/shopping.png';
 
 const colorDict = {
   "0" : "#e74c3c",
@@ -51,7 +57,7 @@ class MapScreen extends Component {
 
   constructor(props) {
     super(props);
-
+    // console.log(Dimensions)
     // const userId = "1637485562938133"
     const userId = this.props.uid
 
@@ -90,7 +96,8 @@ class MapScreen extends Component {
       currentPlayer: null,
       userId,
       eventId,
-      maxTurns
+      maxTurns,
+      clicked: false
 
     };
 
@@ -157,6 +164,7 @@ class MapScreen extends Component {
 
   onMapPress(e) {
     // Commment to prevent marker creating
+
     this.makeMove(e.nativeEvent.coordinate)
   }
 
@@ -241,12 +249,20 @@ class MapScreen extends Component {
   makeMove = (coordinate) => {
     //If user is the targeted current player
     if (this.state.currentPlayer == playerDict[this.state.userId]) {
+      this.setState({ clicked: true })
       const lastId = this.state.markers.length;
 
       const newMarker = {
         coordinate,
         id: `${lastId}`
       }
+      const region = {
+        latitude: coordinate.latitude,
+        longitude: coordinate.longitude,
+        longitudeDelta: 0.015,
+        latitudeDelta: 0.015,
+      }
+      this.setState({ region });
 
       const oldMarker = {
         ...this.state.markers[this.state.markers.length-1]
@@ -284,7 +300,6 @@ class MapScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-
         <MapView
           style={styles.mapStyle}
           region={this.state.region}
@@ -293,6 +308,9 @@ class MapScreen extends Component {
           pitchEnabled={false}
           onRegionChangeComplete={this.onRegionChangeComplete}
         >
+          <Image source={art} style={styles.artStyle} />
+          <Image source={food} style={styles.foodStyle} />
+
         {this.state.markers.map((marker, index) => {
           // console.log(index)
           // if (index == 0) {
@@ -344,6 +362,10 @@ class MapScreen extends Component {
   }
 }
 
+const IMAGE_WIDTH = 102.0/2.0;
+const IMAGE_HEIGHT = 77.0/2.0
+const CIRCLE_RADIUS = 60.0;
+
 const styles = {
   container: {
     flex: 1,
@@ -351,6 +373,32 @@ const styles = {
   },
   mapStyle: {
     flex: 1
+  },
+  artStyle: {
+    position: 'absolute',
+    marginTop: height/2.0 - IMAGE_HEIGHT + CIRCLE_RADIUS,
+    marginLeft: width/2.0 - IMAGE_WIDTH
+  },
+  fitnessStyle: {
+    position: 'absolute',
+    marginTop: height/2.0 - IMAGE_HEIGHT + CIRCLE_RADIUS,
+    marginLeft: width/2.0 - IMAGE_WIDTH
+  },
+  foodStyle: {
+    position: 'absolute',
+    marginTop: height/2.0 - IMAGE_HEIGHT + CIRCLE_RADIUS,
+    marginLeft: width/2.0 - IMAGE_WIDTH,
+
+  },
+  hotelStyle: {
+    position: 'absolute',
+    marginTop: height/2.0 - IMAGE_HEIGHT + CIRCLE_RADIUS,
+    marginLeft: width/2.0 - IMAGE_WIDTH
+  },
+  shoppingStyle: {
+    position: 'absolute',
+    marginTop: height/2.0 - IMAGE_HEIGHT + CIRCLE_RADIUS,
+    marginLeft: width/2.0 - IMAGE_WIDTH
   },
   buttonContainer1: {
     position: 'absolute',
