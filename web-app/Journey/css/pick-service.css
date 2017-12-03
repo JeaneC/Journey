@@ -1,0 +1,123 @@
+body {
+    padding     : 0;
+    margin      : 0;
+    font-family : "SF Pro Text", sans-serif;
+}
+
+.nav-bar {
+    text-align       : center;
+    padding          : 18px 0;
+    margin           : 0;
+    z-index          : 1;
+    background-color : #405C96;
+    transition       : all 600ms cubic-bezier(1, 0, 0, 1);
+    color            : white;
+}
+
+.done-button, .cancel-button {
+    position: absolute;
+    top: 16px;
+    color: white;
+}
+
+.done-button {
+    right: 20px;
+}
+
+.cancel-button {
+    left: 20px;
+}
+
+.card-layout {
+    padding    : 10px;
+    box-shadow : 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.table {
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 2px;
+    list-style: none;
+}
+
+.table > li > div {
+    display: flex;
+    padding: 10px;
+}
+
+.table > li:not(:last-child) {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.table > li {
+    color: #757575;
+}
+
+.table > li .selected {
+    background-color: #009CE9;
+    color: white;
+    border-radius: 2px;
+}
+
+.tab-bar, .nav-bar, .main-content {
+    position : fixed;
+    width    : 100%;
+}
+
+.main-content {
+    z-index          : 2;
+    background-color : #F3F3F3;
+    box-shadow       : 0 0 4px rgba(0, 0, 0, 0.2);
+    transition       : all 600ms cubic-bezier(1, 0, 0, 1);
+}
+
+#app-screen.tab-shown .tab-bar {
+    bottom : 0;
+}
+
+#app-screen:not(.tab-shown) .tab-bar {
+    bottom : -55px;
+}
+
+#app-screen:not(.tab-shown) .main-content {
+    bottom : 0;
+}
+
+#app-screen:not(.nav-shown) .main-content {
+    top : 0;
+}
+
+#app-screen.tab-shown .main-content {
+    bottom : 55px;
+}
+
+#app-screen.nav-shown .main-content {
+    top : 55px;
+}
+
+#app-screen.nav-shown .nav-bar {
+    top : 0;
+}
+
+#app-screen:not(.nav-shown) .nav-bar {
+    top : -55px;
+}
+
+.service-icon {
+    width: 20px;
+    height: 20px;
+    background-color: #999999;
+}
+
+.service-name {
+    flex: 1;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.service-distance {
+    margin-top: 3px;
+    font-size: 12px;
+}

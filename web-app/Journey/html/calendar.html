@@ -23,69 +23,59 @@
     </nav>
 
     <div class="main-content">
-        <ul id="main-content-events">
-            <h3>Basic Info</h3>
-            <li class="card-layout event-row">
-                <div class="event-name">
-                    <input type="text" placeholder="Name" class="input" size="30">
-                </div>
-            </li>
-            <h3>Start Date</h3>
-            <li class="card-layout event-row">
-                <div class="event-name">
-                    <input type="date" class="input">
-                </div>
-            </li>
-            <h3>Number of Turns</h3>
-            <li class="card-layout event-row">
-                <div class="event-name">
-                    <input type="text" placeholder="3" class="input" size="30">
-                </div>
-            </li>
-            <table id="invite">
+        <h3>Basic Info</h3>
+        <div class="card-layout friend-row">
+            <input type="text" placeholder="Name" class="input" size="30">
+        </div>
+        <h3>Start Date</h3>
+        <div class="card-layout friend-row">
+            <input type="date" class="input">
+        </div>
+        <h3>Number of Turns</h3>
+        <div class="card-layout friend-row">
+            <input type="text" placeholder="3" class="input" size="30">
+        </div>
+        <div id="calendar-invite">
+            <h3>Invite Friends</h3>
+            <div id="selector">0 / 7 Selected</div>
+        </div>
+        <div class="card-layout friend-row">
+            <table>
                 <tr>
-                    <td><h3>Invite Friends</h3></td>
-                    <td><p id="selector">0 / 7 Selected</p></td>
+                    <td><img src="../imgs/events/profiles/0.png"></td>
+                    <td><p class="name">Nick Grifka</p></td>
                 </tr>
             </table>
-            <li class="card-layout event-row">
-                <table>
-                    <tr>
-                        <td><img src="../imgs/events/profiles/0.png"></td>
-                        <td><p class="name">Nick Grifka</p></td>
-                    </tr>
-                </table>
-            </li>
-            <li class="card-layout event-row">
-                <table>
-                    <tr>
-                        <td><img src="../imgs/events/profiles/1.png"></td>
-                        <td><p class="name">Jeffrey Estrada Ramos</p></td>
-                    </tr>
-                </table>
-            </li>
-            <li class="card-layout event-row">
-                <table>
-                    <tr>
-                        <td><img src="../imgs/events/profiles/2.png"></td>
-                        <td><p class="name">Jeffrey Estrada Ramos</p></td>
-                    </tr>
-                </table>
-            </li>
-        </ul>
+        </div>
+        <div class="card-layout friend-row">
+            <table>
+                <tr>
+                    <td><img src="../imgs/events/profiles/1.png"></td>
+                    <td><p class="name">Jeffrey Estrada Ramos</p></td>
+                </tr>
+            </table>
+        </div>
+        <div class="card-layout friend-row">
+            <table>
+                <tr>
+                    <td><img src="../imgs/events/profiles/2.png"></td>
+                    <td><p class="name">Jeffrey Estrada Ramos</p></td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 
 <!-- Tabbar -->
 <ul class="tab-bar">
     <li class="selected">
-        <div><img src="../icon/filled/user.svg"></div>
+        <img src="../icon/filled/user.svg">
     </li>
     <li>
-        <div><img src="../icon/map-icon.svg"></a> </div>
+        <img src="../icon/map-icon.svg">
     </li>
     <li>
-        <div><img src="../icon/calendar-icon.svg"></div>
+        <img src="../icon/calendar-icon.svg">
     </li>
 </ul>
 
