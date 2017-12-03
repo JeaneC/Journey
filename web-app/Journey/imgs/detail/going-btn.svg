@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="193px" height="35px" viewBox="0 0 193 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="184px" height="34px" viewBox="0 0 184 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
     <title>invite-btn</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="wire-frame" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Detail-Screen" transform="translate(-91.000000, -680.000000)">
-            <g id="invite-btn" transform="translate(91.000000, 680.000000)">
-                <rect id="Rectangle-9" fill="#597BB5" x="0" y="0" width="192.8025" height="34.7985" rx="2.8215"></rect>
-                <g id="Group" transform="translate(75.600000, 5.400000)">
-                    <text id="Going" font-family="SFProText-Semibold, SF Pro Text" font-size="16.929" font-weight="500" fill="#FFFFFF">
-                        <tspan x="0" y="16">Going</tspan>
+        <g id="Detail-Screen" transform="translate(-96.000000, -681.000000)">
+            <g id="invite-btn" transform="translate(96.000000, 681.000000)">
+                <rect id="Rectangle-9" fill="#597BB5" x="0" y="0" width="183.162375" height="33.058575" rx="2.680425"></rect>
+                <g id="Group" transform="translate(71.820000, 5.130000)">
+                    <text id="Going" font-family="SFProText-Regular, SF Pro Text" font-size="16.08255" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="0" y="15">Going</tspan>
                     </text>
-                    <g id="icon/check" transform="translate(64.800000, 2.700000)">
+                    <g id="icon/check" transform="translate(61.560000, 2.565000)">
                         <g id="ic-(-done-)">
-                            <polygon id="Shape" points="0 0 17 0 17 17 0 17"></polygon>
-                            <polygon id="Shape" fill="#FFFFFF" fill-rule="nonzero" points="6.375 11.475 3.4 8.5 2.40833333 9.49166667 6.375 13.4583333 14.875 4.95833333 13.8833333 3.96666667"></polygon>
+                            <polygon id="Shape" points="0 0 16 0 16 16 0 16"></polygon>
+                            <polygon id="Shape" fill="#FFFFFF" fill-rule="nonzero" points="6 10.8 3.2 8 2.26666667 8.93333333 6 12.6666667 14 4.66666667 13.0666667 3.73333333"></polygon>
                         </g>
                     </g>
                 </g>
