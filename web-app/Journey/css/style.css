@@ -1,9 +1,14 @@
 
 body { background-color: #FBFBFB;}
 
-h1 h2 h3 h4 h5 h6 {
-  font-family: SFProText-Regular;
+body {
+    font-family : "SF Pro Text", sans-serif;
 }
+
+h1 h2 h3 h4 h5 h6 {
+  font-family:  "SF Pro Text", sans-serif;
+}
+
 .top-navbar {
 	height: 54px;
 	width: 100%;
@@ -12,13 +17,14 @@ h1 h2 h3 h4 h5 h6 {
 	outline: 0 none;
 	border: 0 none;
 	box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.15);
+  position : fixed;
 }
 #navbar-title {
 	color: white;
 	font-size: 24px;
 	padding-top: 11px;
 	padding-bottom: 11px;
-	font-family: SFProText-Regular;
+	font-family:  "SF Pro Text", sans-serif;
 	letter-spacing: 1px;
 }
 .tab-bar, .nav-bar {
@@ -46,7 +52,7 @@ h1 h2 h3 h4 h5 h6 {
 	z-index: 3;
 	background-color: white;
 	transition: all 600ms cubic-bezier(1, 0, 0, 1);
-	box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.10);
+	box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.02);
 }
 .tab-bar>li {
 	text-align: center;
