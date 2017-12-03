@@ -15,7 +15,7 @@
 
 
 
-.bottom-navbar {
+.bottom-navbar{
       height: 54px;
       width: 100%;
       background: white;
@@ -23,20 +23,11 @@
       overflow: hidden;
       position: fixed;
       bottom: 0;
-
       outline: 0 none;
       border: 0 none;
       box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.10);
     }
 
-    /* Center div horizontal & vertical */
-    .div-centered {
-    position: absolute;
-top:50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    }
+.bottom-navbar a {
+  padding: 14px 16px;
+}
